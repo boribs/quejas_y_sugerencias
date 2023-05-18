@@ -30,7 +30,7 @@ body {
 
 #top-header {
     --logo-height: 5.5em;
-    margin-bottom: 5em;
+    margin-bottom: 1em;
 }
 
 #BUAP-logo {
@@ -41,6 +41,11 @@ body {
 #header-and-main {
     /* https://stackoverflow.com/questions/42294/how-do-you-get-the-footer-to-stay-at-the-bottom-of-a-web-page */
     min-height: calc(100vh - var(--footer-height));
+}
+
+h1 {
+    font-size: 4em;
+    margin-bottom: 0;
 }
 
 #main-content {
