@@ -2,7 +2,8 @@ Diseño:
     ✔ Usar tipografía correcta @done(23-05-17 18:24)
     ☐ Botones usables
         Actualmente se tiene texto en su lugar
-    ☐ Pie de página
+    ✔ Pie de página @done(23-05-17 18:38)
+    ☐ Diseño responsivo
 
 Implementación en PHP:
     ☐ Inicio de sesión
