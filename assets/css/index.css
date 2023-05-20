@@ -128,8 +128,15 @@ h1 {
 
     font-weight: normal;
 
-    background-color: blue;
     color: var(--secondary-color);
+}
+
+.complaint {
+    background-color: darkblue;
+}
+
+.suggestion {
+    background-color: blue;
 }
 
 .entry-brief {
