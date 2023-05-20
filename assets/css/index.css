@@ -13,7 +13,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.right {
+.header-right {
     display: flex;
     align-items: center;
     height: var(--header-logo-height);
