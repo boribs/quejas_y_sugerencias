@@ -110,6 +110,11 @@ h1 {
 
     padding-left: var(--padding);
     padding-right: var(--padding);
+    margin: 0.5em;
+}
+
+.entry:hover {
+    background-color: var(--secondary-color);
 }
 
 .entry-title-div {
