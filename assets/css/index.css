@@ -70,11 +70,12 @@ h1 {
 #forum-container {
     width: 70vw;
     min-height: 15em;
-    border: 1px solid darkblue;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    background-color: #dfd9d9;
 }
 
 #forum-header {
@@ -89,11 +90,41 @@ h1 {
 #forum-entries-container {
     width: 100%;
 
-    border-top: 1px solid black;
     display: flex;
     flex-grow: 1;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+}
+
+.entry {
+    --padding: 2em;
+    width: calc(100% - var(--padding-left));
+
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+}
+
+.entry-title-div {
+    background-color: none;
+}
+
+.entry-title {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.entry-category {
+    padding: 0.2em;
+
+    border-radius: 5%;
+
+    font-weight: normal;
+
+    background-color: blue;
+    color: var(--secondary-color);
+}
+
+.entry-brief {
+    font-size: 0.9em;
 }
 
 footer {
