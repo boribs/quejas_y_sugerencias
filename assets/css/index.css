@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 :root {
+    --header-logo-height: 5.5em;
     --header-color: #00395e; /* Este color es del header de https://www.buap.mx/ */
     --footer-height: 3.5em;
 }
@@ -15,7 +16,7 @@ body {
 .right {
     display: flex;
     align-items: center;
-    height: var(--logo-height);
+    height: var(--header-logo-height);
     margin: 1em;
 }
 
@@ -30,13 +31,12 @@ body {
 }
 
 #top-header {
-    --logo-height: 5.5em;
     margin-bottom: 1em;
     background-color: var(--header-color);
 }
 
 #BUAP-logo {
-    height: var(--logo-height);
+    height: var(--header-logo-height);
     margin: 1em;
 }
 
