@@ -143,3 +143,8 @@ footer {
     color: var(--secondary-color);
     background-color: var(--main-color);
 }
+
+/* placeholder */
+.footer-text-element {
+    margin: 1em;
+}
