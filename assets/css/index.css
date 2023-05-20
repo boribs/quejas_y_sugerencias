@@ -21,6 +21,7 @@ body {
 .header-right {
     display: flex;
     align-items: center;
+
     height: calc(var(--header-logo-height) + var(--header-logo-margin));
     margin: auto 1em auto 1em;
 }
@@ -31,6 +32,7 @@ body {
 
 .row {
     width: 100%;
+
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -38,6 +40,7 @@ body {
 
 #top-header {
     margin-bottom: 1em;
+
     background-color: var(--main-color);
     color: var(--secondary-color);
 }
@@ -75,7 +78,7 @@ h1 {
     flex-direction: column;
     align-items: center;
 
-    background-color: #dfd9d9;
+    background-color: white;
 }
 
 #forum-header {
