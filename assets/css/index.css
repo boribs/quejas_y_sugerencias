@@ -86,7 +86,7 @@ h1 {
     margin: 1em;
 }
 
-#forum-entries {
+#forum-entries-container {
     width: 100%;
 
     border-top: 1px solid black;
