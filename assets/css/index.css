@@ -83,8 +83,9 @@ h1 {
     margin: 0;
 }
 
-.d {
-    margin: 1em;
+#forum-container hr {
+    width: 97%;
+    color: var(--main-color);
 }
 
 #forum-entries-container {
