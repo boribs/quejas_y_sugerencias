@@ -33,6 +33,7 @@ body {
 #top-header {
     margin-bottom: 1em;
     background-color: var(--header-color);
+    color: white;
 }
 
 #BUAP-logo {
