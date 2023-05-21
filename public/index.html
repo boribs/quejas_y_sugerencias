@@ -22,18 +22,54 @@
 
                 <div id="forum-container">
                     <header id="forum-header" class="row">
-                        <div class="d">Filtro</div>
-                        <div class="d">Buscar</div>
+                        <div class="forum-header-button">Filtro</div>
+                        <div class="forum-header-button">Buscar</div>
                         <div class="separator"></div>
                         <!--
                             Si ya inició sesión:
                             <div class="d">Nueva publicación</div>
                          -->
-                        <div class="d">Iniciar sesión</div>
+                        <div class="forum-header-button">Iniciar sesión</div>
                     </header>
-
-                    <div id="forum-entries">
-                        <p>Por el momento no hay quejas sin resolver.</p>
+                    <hr>
+                    <div id="forum-entries-container">
+                        <!-- <p>Por el momento no hay quejas sin resolver.</p> -->
+                        <div class="entry" onclick="location.href='#';">
+                            <div class="entry-title-div">
+                                <p class="entry-title">
+                                    <span class="entry-user">Usuario 1:</span>
+                                    Este es el título de la queja
+                                    <span class="entry-category complaint">Queja</span>
+                                </p>
+                            </div>
+                            <p class="entry-brief">
+                                Aquí está lo primero, no entiendo por qué siempre sucede que...
+                            </p>
+                        </div>
+                        <div class="entry" onclick="location.href='#';">
+                            <div class="entry-title-div">
+                                <p class="entry-title">
+                                    <span class="entry-user">Usuario 2:</span>
+                                    Creo que la facultad se vería mucho mejor si...
+                                    <span class="entry-category suggestion">Sugerencia</span>
+                                </p>
+                            </div>
+                            <p class="entry-brief">
+                                blablablabalbalbalbalbalabalbalablablablblablablablablabla...
+                            </p>
+                        </div>
+                        <div class="entry" onclick="location.href='#';">
+                            <div class="entry-title-div">
+                                <p class="entry-title">
+                                    <span class="entry-user">ANONIMO:</span>
+                                    El profesor XXXXXXX se la pasa diciendo tonterías en vez de dar la clase...
+                                    <span class="entry-category complaint">Queja</span>
+                                </p>
+                            </div>
+                            <p class="entry-brief">
+                                blablablabalbalbalbalbalabalbalablablablblablablablablabla...
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -41,10 +77,10 @@
     </div>
 
     <footer class="row">
-        <div class="d">BUAP 2023</div>
+        <div class="footer-text-element">BUAP 2023</div>
         <div class="separator"></div>
-        <div class="d">Cristian Gotchev</div>
-        <div class="d">Irving Hernández</div>
+        <div class="footer-text-element">Cristian Gotchev</div>
+        <div class="footer-text-element">Irving Hernández</div>
     </footer>
 </body>
 </html>
