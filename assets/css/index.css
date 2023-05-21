@@ -159,11 +159,12 @@ body {
 }
 
 .entry-category {
-    padding: 0.2em;
+    padding: 0.1em 0.2em 0.1em 0.2em;
 
     border-radius: 5%;
 
     font-weight: normal;
+    line-height: 1.6;
 
     color: var(--secondary-color);
 }
@@ -178,6 +179,8 @@ body {
 
 .entry-brief {
     font-size: 0.9em;
+
+    margin: 0;
 }
 
 footer {
