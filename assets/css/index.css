@@ -66,10 +66,12 @@ body {
 #main-content h1 {
     font-size: 4em;
     margin-bottom: 0;
+    text-align: center;
 }
 
 #main-content h2 {
     margin-bottom: 5em;
+    text-align: center;
 }
 
 #forum-container {
