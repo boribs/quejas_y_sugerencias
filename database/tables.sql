@@ -31,7 +31,7 @@ CREATE TABLE Usuario (
   Apellido_Pat VARCHAR(255) NOT NULL,
   Apellido_Mat VARCHAR(255) NOT NULL,
   Correo VARCHAR(255) NOT NULL UNIQUE,
-  Contraseña VARCHAR(255) NOT NULL,
+  Contrasena VARCHAR(255) NOT NULL,
   FOREIGN KEY (Tipo) REFERENCES Tipo_Usuario(Id)
 );
 

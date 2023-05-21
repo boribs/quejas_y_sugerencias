@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login | FCC</title>
+        <link rel="stylesheet" href="../assets/css/login.css">
+        <link rel="icon" type="image/png" href="../assets/images/escudo-buap.png">
+    </head>
+    <body>
+        <form action="../assets/conexiones/loguear.php" method="POST" id="form">
+            <div class="form">
+                <h1>¡Bienvenido!</h1>
+                <h2>Inicia sesion</h2>
+                <div class="grupo"> <!--Casilla para leer el correo-->
+                    <input type="email" name="correo" id="email" required><span class="barra"></span>
+                    <label for="">Email</label>
+                </div>
+                <div class="grupo"> <!--Casilla para leer la contraseña-->
+                    <input type="password" name="clave" id="password" required><span class="barra"></span>
+                    <label for="">Contraseña</label>
+                </div>
+                <button type="submit">Iniciar</button>
+                <br>
+                <p>¿Olvide mi contraseña? <a href=""> Entar aqui</a></p><br>
+                <p><a href="index.html">Regresar a la pagina principal</a></p> <!--Nota: No olvidar colocar la extension ".php" en ves de ".html"-->
+            </div>
+        </form>
+    </body>
+</html>
