@@ -179,6 +179,7 @@ body {
 
 .entry-brief {
     font-size: 0.9em;
+    color: gray;
 
     margin: 0;
 }
