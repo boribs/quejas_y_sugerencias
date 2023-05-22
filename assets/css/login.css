@@ -48,8 +48,8 @@ h2 {
 
 form {
     background: var(--secondary-color);
-    padding: 2.5em 0;
-    border-radius: 0.8em;
+    padding: 2.5rem 0;
+    border-radius: 0.8rem;
 }
 
 .form {
@@ -59,7 +59,7 @@ form {
 
 form .grupo {
     position: relative;
-    margin: 3em;
+    margin: 3rem;
 }
 
 input {
@@ -68,10 +68,10 @@ input {
     background: none;
     color: #c6c6c6;
 
-    font-size: 1.1em;
+    font-size: 1.1rem;
 
     width: 100%;
-    padding: 0.6em;
+    padding: 0.6rem;
 
     border: none;
     border-bottom: 1px solid var(--colorTextos);
@@ -86,11 +86,11 @@ label {
     color: var(--colorTextos);
 
     /* font-size: 16px; */
-    font-size: 1em;
+    font-size: 1rem;
 
     position: absolute;
-    left: 0.1em;
-    top: 0.9em;
+    left: 0.1rem;
+    top: 0.9rem;
 
     transition: 0.5s ease all;
     pointer-events: none;
@@ -98,8 +98,8 @@ label {
 
 input:focus~label,
 input:valid~label {
-    top: -1em;
-    font-size: 0.8em;
+    top: -1rem;
+    font-size: 0.8rem;
     color: var(--color-line3);
 }
 
@@ -145,11 +145,11 @@ button {
 
     display: block;
     width: 80%;
-    height: 2.6em;
+    height: 2.6rem;
 
-    margin: 1em auto;
+    margin: 1rem auto;
 
-    font-size: 1em;
+    font-size: 1rem;
 
     cursor: pointer;
 }
