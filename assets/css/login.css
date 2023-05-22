@@ -68,10 +68,10 @@ input {
     background: none;
     color: #c6c6c6;
 
-    font-size: 18px;
+    font-size: 1.1em;
 
     width: 100%;
-    padding: 10px 10px 10px 5px;
+    padding: 0.6em;
 
     border: none;
     border-bottom: 1px solid var(--colorTextos);
