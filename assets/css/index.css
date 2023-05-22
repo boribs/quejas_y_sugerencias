@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap');
 
 :root {
     --main-color: #00395e; /* Este color es del header de https://www.buap.mx/ */
@@ -71,14 +71,18 @@ body {
 }
 
 #main-content h1 {
-    font-size: 4rem;
     margin-bottom: 0;
+
+    font-size: 4rem;
+    font-weight: 400;
     text-align: center;
 }
 
 #main-content h2 {
     margin-bottom: 5rem;
+
     text-align: center;
+    font-weight: 200;
 }
 
 #forum-container {
