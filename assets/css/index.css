@@ -27,12 +27,39 @@ body {
     -o-background-size: cover;
 }
 
+#BUAP-logo {
+    height: var(--header-logo-height);
+    margin: var(--header-logo-margin);
+}
+
+#header-and-main {
+    /* https://stackoverflow.com/questions/42294/how-do-you-get-the-footer-to-stay-at-the-bottom-of-a-web-page */
+    min-height: calc(100vh - var(--footer-height));
+}
+
+#top-header {
+    margin-bottom: 1rem;
+
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+}
+
+.no-decor {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.header-button:hover {
+    cursor: pointer;
+}
+
 .header-right {
     display: flex;
     align-items: center;
 
     height: calc(var(--header-logo-height) + var(--header-logo-margin));
     margin: auto 1rem auto 1rem;
+    padding: 0.5rem;
 }
 
 .separator {
@@ -45,23 +72,6 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-}
-
-#top-header {
-    margin-bottom: 1rem;
-
-    background-color: var(--main-color);
-    color: var(--secondary-color);
-}
-
-#BUAP-logo {
-    height: var(--header-logo-height);
-    margin: var(--header-logo-margin);
-}
-
-#header-and-main {
-    /* https://stackoverflow.com/questions/42294/how-do-you-get-the-footer-to-stay-at-the-bottom-of-a-web-page */
-    min-height: calc(100vh - var(--footer-height));
 }
 
 #main-content {
