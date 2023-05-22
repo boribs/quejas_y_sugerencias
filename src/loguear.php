@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require('conexion.php');
+    require('connection.php');
     $connection = connect();
 
     $email = $_REQUEST['correo'];
