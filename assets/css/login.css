@@ -29,7 +29,7 @@ body {
     -webkit-background-size: cover;
     -o-background-size: cover;
 
-    height: 650px;
+    height: 100vh;
 
     display: flex;
     justify-content: center;
@@ -48,7 +48,9 @@ h2 {
 
 form {
     background: var(--secondary-color);
+
     padding: 2.5rem 0;
+
     border-radius: 0.8rem;
 }
 
