@@ -19,6 +19,12 @@ body {
 
     font-family: 'Source Sans Pro', sans-serif;
     background-color: var(--secondary-color);
+
+    background-image: url("../images/Fondo_Login.jpg");
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
 }
 
 .header-right {
