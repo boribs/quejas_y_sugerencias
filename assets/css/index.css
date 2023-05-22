@@ -2,6 +2,7 @@
 
 :root {
     --main-color: #00395e; /* Este color es del header de https://www.buap.mx/ */
+    --main-color-hover: #156397;
     --secondary-color: #f0ecec; /* Este es el cuerpo de https://www.cs.buap.mx/ */
     --darker-blue-buap: #064d7c;
     --lighter-blue-buap: #04ccf4;
@@ -118,8 +119,8 @@ body {
     color: white;
 }
 
-.forum-header-button.colored  .forum-header-button-text:hover {
-    color: var(--lighter-blue-buap);
+.forum-header-button.colored:hover {
+    background-color: var(--main-color-hover);
 }
 
 #forum-container hr {
