@@ -118,6 +118,8 @@ body {
 
     padding: 0.4rem;
     margin-top: 0.6rem;
+
+    position: relative;
 }
 
 .forum-header-button.colored {
@@ -130,6 +132,55 @@ body {
     text-decoration: none;
     color: var(--main-color);
 }
+
+
+#search-bar {
+    display: block;
+
+    background: none;
+    color: #c6c6c6;
+
+    font-size: 0.9rem;
+
+    width: 100%;
+    padding: 0.1rem;
+    margin-bottom: 1%;
+
+    border: none;
+    outline: none;
+
+    transition: border 0.5s;
+    border-bottom: 0px solid white;
+}
+
+#search-bar-label {
+    color: var(--main-color);
+
+    font-size: 1rem;
+
+    position: absolute;
+    left: 0.9rem;
+    top: 0.4rem;
+
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+
+#search-bar:focus~#search-bar-label,
+#search-bar:not(:placeholder-shown)~#search-bar-label {
+    left: -2.9rem;
+}
+
+#search-bar:focus~label::after,
+#search-bar:not(:placeholder-shown)~#search-bar-label::after {
+    content: ":";
+}
+
+#search-bar:focus,
+#search-bar:not(:placeholder-shown) {
+    border-bottom: 1px solid var(--main-color);
+}
+
 
 .forum-header-button-text:hover {
     color: var(--lighter-blue-buap);
