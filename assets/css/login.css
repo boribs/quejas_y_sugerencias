@@ -21,13 +21,16 @@
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
+
     background-image: url("../images/Fondo_Login.jpg");
     background-size: cover;
     background-position: center;
     -moz-background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
+
     height: 650px;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,12 +64,16 @@ form .grupo {
 }
 
 input {
+    display: block;
+
     background: none;
     color: #c6c6c6;
+
     font-size: 18px;
-    padding: 10px 10px 10px 5px;
-    display: block;
+
     width: 100%;
+    padding: 10px 10px 10px 5px;
+
     border: none;
     border-bottom: 1px solid var(--colorTextos);
 }
@@ -78,10 +85,13 @@ input:focus {
 
 label {
     color: var(--colorTextos);
+
     font-size: 16px;
+
     position: absolute;
     left: 5px;
     top: 10px;
+
     transition: 0.5s ease all;
     pointer-events: none;
 }
@@ -100,14 +110,17 @@ input:valid~label {
 }
 
 .barra::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
     content: "";
+
     height: 2px;
     width: 0%;
-    bottom: 0;
-    position: absolute;
+
     background: linear-gradient(to right, var(--color-line1), var(--color-line2));
     transition: 0.5s ease width;
-    left: 0;
 }
 
 input:focus~.barra::before {
@@ -124,14 +137,20 @@ a {
 
 button {
     font-family: 'Source Sans Pro', sans-serif;
+
     background: var(--color-line1);
+    color: var(--secondary-color);
+
     border: none;
+
     display: block;
     width: 80%;
-    margin: 10px auto;
-    color: var(--secondary-color);
     height: 40px;
+
+    margin: 10px auto;
+
     font-size: 16px;
+
     cursor: pointer;
 }
 
