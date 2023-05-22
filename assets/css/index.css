@@ -6,10 +6,10 @@
     --darker-blue-buap: #064d7c;
     --lighter-blue-buap: #04ccf4;
 
-    --header-logo-height: 4em;
-    --header-logo-margin: 0.6em;
+    --header-logo-height: 4rem;
+    --header-logo-margin: 0.6rem;
 
-    --footer-height: 3.5em;
+    --footer-height: 3.5rem;
 }
 
 body {
@@ -25,7 +25,7 @@ body {
     align-items: center;
 
     height: calc(var(--header-logo-height) + var(--header-logo-margin));
-    margin: auto 1em auto 1em;
+    margin: auto 1rem auto 1rem;
 }
 
 .separator {
@@ -41,7 +41,7 @@ body {
 }
 
 #top-header {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 
     background-color: var(--main-color);
     color: var(--secondary-color);
@@ -64,19 +64,19 @@ body {
 }
 
 #main-content h1 {
-    font-size: 4em;
+    font-size: 4rem;
     margin-bottom: 0;
     text-align: center;
 }
 
 #main-content h2 {
-    margin-bottom: 5em;
+    margin-bottom: 5rem;
     text-align: center;
 }
 
 #forum-container {
     width: 70vw;
-    min-height: 15em;
+    min-height: 15rem;
 
     display: flex;
     flex-direction: column;
@@ -91,12 +91,12 @@ body {
 }
 
 .forum-header-button {
-    margin: auto 2em auto 2em;
+    margin: auto 2rem auto 2rem;
 
     display: block;
 
-    padding: 0.4em;
-    margin-top: 0.6em;
+    padding: 0.4rem;
+    margin-top: 0.6rem;
 }
 
 .forum-header-button.colored {
@@ -136,12 +136,12 @@ body {
 }
 
 .entry {
-    --padding: 2em;
+    --padding: 2rem;
     width: calc(100% - var(--padding-left));
 
     padding-left: var(--padding);
     padding-right: var(--padding);
-    margin: 0.5em;
+    margin: 0.5rem;
 }
 
 .entry:hover {
@@ -155,11 +155,11 @@ body {
 
 .entry-title {
     font-weight: bold;
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .entry-category {
-    padding: 0.1em 0.2em 0.1em 0.2em;
+    padding: 0.1rem 0.2rem 0.1rem 0.2rem;
 
     border-radius: 5%;
 
@@ -178,17 +178,17 @@ body {
 }
 
 .entry-brief {
-    font-size: 0.9em;
+    font-size: 0.9rem;
     color: gray;
 
-    margin: 0 0 1em 0;
+    margin: 0 0 1rem 0;
 }
 
 footer {
     position: relative;
     bottom: 0;
 
-    margin-top: 2em;
+    margin-top: 2rem;
     height: var(--footer-height);
 
     color: var(--secondary-color);
@@ -197,7 +197,7 @@ footer {
 
 /* placeholder */
 .footer-text-element {
-    margin: 1em;
+    margin: 1rem;
 }
 
 @media(max-width: 1000px) {
