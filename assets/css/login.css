@@ -85,11 +85,12 @@ input:focus {
 label {
     color: var(--colorTextos);
 
-    font-size: 16px;
+    /* font-size: 16px; */
+    font-size: 1em;
 
     position: absolute;
-    left: 5px;
-    top: 10px;
+    left: 0.1em;
+    top: 0.9em;
 
     transition: 0.5s ease all;
     pointer-events: none;
