@@ -1,7 +1,7 @@
 <?php
     session_start();
     require('conexion.php');
-    $connection = Conectarse();
+    $connection = connect();
 
     $email = $_REQUEST['correo'];
     $clave = $_REQUEST['clave'];

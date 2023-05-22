@@ -1,5 +1,5 @@
 <?php
-    function Conectarse()
+    function connect()
     {
         if (!($link=mysqli_connect("localhost","root","")))
         {
