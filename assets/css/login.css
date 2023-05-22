@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+:root {
+    --colorTextos: #49454567;
+    --main-color: #00395e;
+    /* Este color es del header de https://www.buap.mx/ */
+    --secondary-color: #f0edec;
+    /* Este es el cuerpo de https://www.cs.buap.mx/ */
+    --color-line1: #064d7c;
+    --color-line2: #006db6;
+    --color-line3: #13b2e2;
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+
+    background-image: url("../images/Fondo_Login.jpg");
+    background-size: cover;
+    background-position: center;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 700;
+}
+
+h2 {
+    text-align: center;
+    font-weight: 700;
+}
+
+form {
+    background: var(--secondary-color);
+
+    padding: 2.5rem 0;
+
+    border-radius: 0.8rem;
+}
+
+.form {
+    width: 100%;
+    margin: auto;
+}
+
+form .grupo {
+    position: relative;
+    margin: 3rem;
+}
+
+input {
+    display: block;
+
+    background: none;
+    color: #c6c6c6;
+
+    font-size: 1.1rem;
+
+    width: 100%;
+    padding: 0.6rem;
+
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+}
+
+input:focus {
+    outline: none;
+    color: #5e5d5d;
+}
+
+label {
+    color: var(--colorTextos);
+
+    /* font-size: 16px; */
+    font-size: 1rem;
+
+    position: absolute;
+    left: 0.1rem;
+    top: 0.9rem;
+
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+
+input:focus~label,
+input:valid~label {
+    top: -1rem;
+    font-size: 0.8rem;
+    color: var(--color-line3);
+}
+
+.barra {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.barra::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    content: "";
+
+    height: 2px;
+    width: 0%;
+
+    background: linear-gradient(to right, var(--color-line1), var(--color-line2));
+    transition: 0.5s ease width;
+}
+
+input:focus~.barra::before {
+    width: 100%;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    color: #0d1c2b;
+}
+
+button {
+    font-family: 'Source Sans Pro', sans-serif;
+
+    background: var(--color-line1);
+    color: var(--secondary-color);
+
+    border: none;
+
+    display: block;
+    width: 80%;
+    height: 2.6rem;
+
+    margin: 1rem auto;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #156397;
+}
