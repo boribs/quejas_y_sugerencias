@@ -98,8 +98,8 @@ label {
 
 input:focus~label,
 input:valid~label {
-    top: -14px;
-    font-size: 12px;
+    top: -1em;
+    font-size: 0.8em;
     color: var(--color-line3);
 }
 
