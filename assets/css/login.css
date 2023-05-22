@@ -2,8 +2,10 @@
 
 :root {
     --colorTextos: #49454567;
-    --main-color: #00395e; /* Este color es del header de https://www.buap.mx/ */
-    --secondary-color: #f0edec; /* Este es el cuerpo de https://www.cs.buap.mx/ */
+    --main-color: #00395e;
+    /* Este color es del header de https://www.buap.mx/ */
+    --secondary-color: #f0edec;
+    /* Este es el cuerpo de https://www.cs.buap.mx/ */
     --color-line1: #064d7c;
     --color-line2: #006db6;
     --color-line3: #13b2e2;
@@ -28,36 +30,37 @@ body {
     height: 650px;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
-h1{
+h1 {
     text-align: center;
     font-weight: 700;
 }
 
-h2{
+h2 {
     text-align: center;
     font-weight: 700;
 }
 
-form{
-    background: var(--secondary-color);;
+form {
+    background: var(--secondary-color);
+    ;
     padding: 40px 0;
     border-radius: 10px;
 }
 
-.form{
+.form {
     width: 100%;
     margin: auto;
 }
 
-form .grupo{
+form .grupo {
     position: relative;
-    margin: 45px ;
+    margin: 45px;
 }
 
-input{
+input {
     background: none;
     color: #c6c6c6;
     font-size: 18px;
@@ -68,12 +71,12 @@ input{
     border-bottom: 1px solid var(--colorTextos);
 }
 
-input:focus{ 
+input:focus {
     outline: none;
     color: #5e5d5d;
 }
 
-label{
+label {
     color: var(--colorTextos);
     font-size: 16px;
     position: absolute;
@@ -84,19 +87,19 @@ label{
 }
 
 input:focus~label,
-input:valid~label{
+input:valid~label {
     top: -14px;
     font-size: 12px;
     color: var(--color-line3);
 }
 
-.barra{
+.barra {
     position: relative;
     display: block;
     width: 100%;
 }
 
-.barra::before{
+.barra::before {
     content: "";
     height: 2px;
     width: 0%;
@@ -107,19 +110,19 @@ input:valid~label{
     left: 0;
 }
 
-input:focus~.barra::before{
+input:focus~.barra::before {
     width: 100%;
 }
 
-p{
-    text-align:center;
+p {
+    text-align: center;
 }
 
-a{
+a {
     color: #0d1c2b;
 }
 
-button{
+button {
     font-family: 'Source Sans Pro', sans-serif;
     background: var(--color-line1);
     border: none;
@@ -132,7 +135,6 @@ button{
     cursor: pointer;
 }
 
-button:hover{
-    background:  #156397;
+button:hover {
+    background: #156397;
 }
-
