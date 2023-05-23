@@ -150,6 +150,20 @@ select::-ms-expand {
     color: var(--secondary-color);
 }
 
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox input {
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+    padding: 0 1rem;
+    accent-color: var(--main-color);
+}
+
 /*Esto lo saque e un link https://codepen.io/anna_blok/pen/eYYvxoK*/
 
 .round-image {
