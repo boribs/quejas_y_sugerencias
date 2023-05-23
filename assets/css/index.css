@@ -150,6 +150,7 @@ body {
 
 #search-bar {
     display: block;
+    position: relative;
 
     background: none;
     color: #c6c6c6;
@@ -158,7 +159,8 @@ body {
 
     width: 100%;
     padding: 0.1rem;
-    margin-bottom: 1%;
+    margin-bottom: 0rem;
+    margin-left: 3rem;
 
     border: none;
     outline: none;
@@ -173,8 +175,8 @@ body {
     font-size: 1rem;
 
     position: absolute;
-    left: 0.9rem;
-    top: 0.4rem;
+    left: 4rem;
+    top: 0.7rem;
 
     transition: left 0.5s;
     pointer-events: none;
@@ -216,7 +218,7 @@ body {
 
 #search-bar:focus~#search-bar-label,
 #search-bar:not(:placeholder-shown)~#search-bar-label {
-    left: -2.9rem;
+    left: 0rem;
 }
 
 #search-bar:focus~label::after,
