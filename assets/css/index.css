@@ -189,9 +189,12 @@ body {
 
     border-radius: 0.3rem;
 
+    visibility: hidden;
+    opacity: 0;
 
     cursor: pointer;
 
+    transition: opacity 0.5s;
 }
 
 #search-bar-button img {
@@ -224,6 +227,12 @@ body {
 #search-bar:focus,
 #search-bar:not(:placeholder-shown) {
     border-bottom: 1px solid var(--main-color);
+}
+
+#search-bar:focus~#search-bar-button,
+#search-bar:not(:placeholder-shown)~#search-bar-button {
+    visibility: visible;
+    opacity: 100;
 }
 
 #forum-container hr {
