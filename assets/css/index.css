@@ -140,7 +140,7 @@ body {
     color: var(--lighter-blue-buap);
 }
 
-.forum-header-button.colored  .forum-header-button-text {
+.forum-header-button.colored .forum-header-button-text {
     color: white;
 }
 
@@ -202,7 +202,7 @@ body {
     height: 1em;
 }
 
-#search-bar-button:active img {
+#search-bar-button:hover:active {
     background-color: var(--secondary-color-darker);
 }
 
