@@ -165,7 +165,6 @@ select::-ms-expand {
 }
 
 /*Esto lo saque e un link https://codepen.io/anna_blok/pen/eYYvxoK*/
-
 .round-image {
     border-radius: 50%;
     width: 3rem;
@@ -215,11 +214,20 @@ select::-ms-expand {
 }
 
 .button--area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background-color: var(--darker-blue-buap);
-    border-radius: 5%;
+    border: none;
+
     width: 15rem;
     height: 3rem;
+
     color: #fff;
+
+    font-size: 0.9rem;
+    text-align: center;
 }
 
 .button--area:hover {
