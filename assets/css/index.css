@@ -348,11 +348,16 @@ footer {
     }
 
     #search-bar {
-        margin-left: 0;
+        margin-left: 3rem;
+        border-bottom: 1px solid var(--main-color);
     }
 
-    #search-bar:focus,
-    #search-bar:not(:placeholder-shown) {
-        margin-left: 3rem;
+    #search-bar~label::after {
+        content: ":";
+    }
+
+    #search-bar-button {
+        visibility: visible;
+        opacity: 100;
     }
 }
