@@ -166,6 +166,11 @@ select::-ms-expand {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.message-area p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 .title-area {
     width: 70vw;
     min-height: 1rem;
