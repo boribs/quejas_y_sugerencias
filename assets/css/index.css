@@ -3,7 +3,10 @@
 :root {
     --main-color: #00395e; /* Este color es del header de https://www.buap.mx/ */
     --main-color-hover: #156397;
+
     --secondary-color: #f0ecec; /* Este es el cuerpo de https://www.cs.buap.mx/ */
+    --secondary-color-darker: #dad6d6; /* Este es el cuerpo de https://www.cs.buap.mx/ */
+
     --darker-blue-buap: #064d7c;
     --lighter-blue-buap: #04ccf4;
 
@@ -114,10 +117,12 @@ body {
 .forum-header-button {
     margin: auto 2rem auto 2rem;
 
-    display: block;
+    display: flex;
 
     padding: 0.4rem;
     margin-top: 0.6rem;
+
+    position: relative;
 }
 
 .forum-header-button.colored {
@@ -141,6 +146,93 @@ body {
 
 .forum-header-button.colored:hover {
     background-color: var(--main-color-hover);
+}
+
+#search-bar {
+    display: block;
+
+    background: none;
+    color: #c6c6c6;
+
+    font-size: 0.9rem;
+
+    width: 100%;
+    padding: 0.1rem;
+    margin-bottom: 1%;
+
+    border: none;
+    outline: none;
+
+    transition: border 0.5s;
+    border-bottom: 0px solid white;
+}
+
+#search-bar-label {
+    color: var(--main-color);
+
+    font-size: 1rem;
+
+    position: absolute;
+    left: 0.9rem;
+    top: 0.4rem;
+
+    transition: left 0.5s;
+    pointer-events: none;
+}
+
+#search-bar-button {
+    margin: 0.15rem;
+    padding: 0.15rem;
+
+    /* background-color: var(--darker-blue-buap); */
+    color: var(--secondary-color);
+
+    border-radius: 0.3rem;
+
+    visibility: hidden;
+    opacity: 0;
+
+    cursor: pointer;
+
+    transition: opacity 0.5s;
+}
+
+#search-bar-button img {
+    width: 1em;
+    height: 1em;
+}
+
+#search-bar-button:active img {
+    background-color: var(--secondary-color-darker);
+}
+
+#search-bar-button:hover {
+    background-color: var(--secondary-color);
+}
+
+#search-bar:not(:focus):placeholder-shown:hover~#search-bar-label {
+    color: var(--lighter-blue-buap);
+}
+
+#search-bar:focus~#search-bar-label,
+#search-bar:not(:placeholder-shown)~#search-bar-label {
+    left: -2.9rem;
+}
+
+#search-bar:focus~label::after,
+#search-bar:not(:placeholder-shown)~#search-bar-label::after {
+    content: ":";
+}
+
+#search-bar:focus,
+#search-bar:not(:placeholder-shown) {
+    border-bottom: 1px solid var(--main-color);
+}
+
+#search-bar:focus~#search-bar-button,
+#search-bar:not(:placeholder-shown)~#search-bar-button {
+    visibility: visible;
+    opacity: 100;
 }
 
 #forum-container hr {
