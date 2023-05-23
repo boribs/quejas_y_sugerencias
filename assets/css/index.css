@@ -3,7 +3,10 @@
 :root {
     --main-color: #00395e; /* Este color es del header de https://www.buap.mx/ */
     --main-color-hover: #156397;
+
     --secondary-color: #f0ecec; /* Este es el cuerpo de https://www.cs.buap.mx/ */
+    --secondary-color-darker: #dad6d6; /* Este es el cuerpo de https://www.cs.buap.mx/ */
+
     --darker-blue-buap: #064d7c;
     --lighter-blue-buap: #04ccf4;
 
@@ -114,7 +117,7 @@ body {
 .forum-header-button {
     margin: auto 2rem auto 2rem;
 
-    display: block;
+    display: flex;
 
     padding: 0.4rem;
     margin-top: 0.6rem;
@@ -175,6 +178,33 @@ body {
 
     transition: left 0.5s;
     pointer-events: none;
+}
+
+#search-bar-button {
+    margin: 0.15rem;
+    padding: 0.15rem;
+
+    /* background-color: var(--darker-blue-buap); */
+    color: var(--secondary-color);
+
+    border-radius: 0.3rem;
+
+
+    cursor: pointer;
+
+}
+
+#search-bar-button img {
+    width: 1em;
+    height: 1em;
+}
+
+#search-bar-button:active img {
+    background-color: var(--secondary-color-darker);
+}
+
+#search-bar-button:hover {
+    background-color: var(--secondary-color);
 }
 
 #search-bar:not(:focus):placeholder-shown:hover~#search-bar-label {
