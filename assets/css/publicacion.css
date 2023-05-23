@@ -76,11 +76,10 @@ body {
     align-items: center;
 }
 
-h2 {
+h1 {
     text-align: center;
-    margin: 1rem;
+    margin: 3rem auto 0.3rem auto;
     padding: 0;
-    align-items: baseline;
 }
 
 #forum-container {
