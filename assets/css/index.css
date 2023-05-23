@@ -128,7 +128,12 @@ body {
 .forum-header-button.colored {
     background-color: var(--darker-blue-buap);
     border-radius: 0.3rem;
-    /* border-left: 3px solid #04ccf4; */
+
+    text-align: center;
+}
+
+.forum-header-button.colored a {
+    width: 100%;
 }
 
 .forum-header-button-text {
