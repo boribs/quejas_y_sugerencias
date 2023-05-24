@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +43,15 @@
                             <div class="d">Nueva publicación</div>
                          -->
                         <div class="forum-header-button colored">
-                            <a class="forum-header-button-text" href="https://google.com">Iniciar sesión</a>
+                            <?php
+
+                            if ($_SESSION["username"]) {
+                                echo "Bienvenido, " . $_SESSION["username"];
+                            } else {
+                                echo "<a class=\"forum-header-button-text\" href=\"https://google.com\">Iniciar sesión</a>";
+                            }
+
+                            ?>
                         </div>
                     </header>
                     <hr>
