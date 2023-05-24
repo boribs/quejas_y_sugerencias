@@ -64,7 +64,7 @@ $connection = connect();
                             <div class="department-option">
                                 <p class="text-form">Dirigido a</p>
                                 <div class="select">
-                                    <select>
+                                    <select name="area">
                                         <?php
                                         $query = "SELECT Nombre FROM Area";
                                         $result = mysqli_query($connection, $query);
@@ -80,7 +80,7 @@ $connection = connect();
                             <div class="anonymous-option">
                                 <p class="text-form">Publicacion anónima</p>
                                 <div class="checkbox">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="anonymus">
                                 </div>
                             </div>
                         </div>
