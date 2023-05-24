@@ -43,3 +43,9 @@ INSERT INTO Usuario (Matricula, Tipo, Nombre, Apellido_Pat, Apellido_Mat, Correo
 INSERT INTO Usuario (Matricula, Tipo, Nombre, Apellido_Pat, Apellido_Mat, Correo, Contrasena) VALUES (202100426, 4, 'Laura', 'Torres', 'Martínez', 'laura.torres@example.com', 'admin');
 INSERT INTO Usuario (Matricula, Tipo, Nombre, Apellido_Pat, Apellido_Mat, Correo, Contrasena) VALUES (202100527, 2, 'Pedro', 'Villa', 'González', 'pedro.villa@example.com', 'admin');
 
+INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, Id_Area, Resuelto, Anonimo)
+VALUES ((SELECT Id FROM Tipo_Publicacion WHERE Nombre = "Queja"), 2, "No se respetó el acuerdo 1:45.", "El día de hoy, 25 de mayo de 2023, en el salón CCO4 - 204 sucedió un evento que no me deja dormir. El profesor XXXXXX rompió el acuerdo 1:45 al no respetar la integridad de los alumnos con el evento BBBBBB.", '2023-05-25', 2, TRUE, TRUE);
+INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, Id_Area, Resuelto, Anonimo)
+VALUES ((SELECT Id FROM Tipo_Publicacion WHERE Nombre = "Sugerencia"), 3, "Bancas en la explanada entre CCO1 y CCO2", "Estaría muy bien si se colocaran bancas entre los salones CCO1 y CCO2, aprovechando el espacio que hay que no se usa.", '2023-02-13', 2, FALSE, FALSE);
+INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, Id_Area, Resuelto, Anonimo)
+VALUES ((SELECT Id FROM Tipo_Publicacion WHERE Nombre = "Queja"), 5, "El internet nunca sirve entre las 10:00 y las 13:00 horas.", "Lo que dice el título, el internet no sirve y es un gran problema cuando tenemos actividades que requieren de recursos en línea.", '2023-03-3', 2, FALSE, FALSE);

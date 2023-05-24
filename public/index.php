@@ -1,3 +1,64 @@
+<?php
+    session_start();
+    require('../src/connection.php');
+
+    function create_entry_dom($row) {
+        $username = $row["Usuario"];
+        $title = $row["Titulo"];
+        $content = $row["Comentario"];
+        if (strlen($content) > 150) {
+            $content = substr($content, 0, 150) . "...";
+        }
+        $type = $row["Tipo"];
+        $type_class = strtolower($type);
+
+        echo "<div class=\"entry\" onclick=\"location.href='#';\">
+                 <div class=\"entry-title-div\">
+                     <p class=\"entry-title\">
+                         <span class=\"entry-user\">$username:</span>
+                         $title
+                         <span class=\"entry-category $type_class\">$type</span>
+                     </p>
+                 </div>
+                 <p class=\"entry-brief\">
+                     $content
+                 </p>
+             </div>";
+    }
+
+    function get_entries() {
+        $connection = connect();
+
+        $query = "SELECT Id, Nombre FROM Tipo_Publicacion";
+        $result = mysqli_query($connection, $query);
+
+        $pub_types = [];
+        while (($row = mysqli_fetch_array($result))) {
+            $pub_types[$row["Id"]] = $row["Nombre"];
+        }
+
+        $query = "SELECT Tipo, Id_Usuario, Titulo, Comentario, Resuelto, Anonimo FROM Publicacion";
+        $result = mysqli_query($connection, $query);
+
+        while (($row = mysqli_fetch_array($result))) {
+            if (!$row["Anonimo"]) {
+                $user = mysqli_fetch_array(
+                    mysqli_query(
+                        $connection,
+                        "SELECT Nombre FROM Usuario WHERE Id = " . $row['Id_Usuario']
+                    )
+                );
+                $row["Usuario"] = $user[0];
+            } else {
+                $row["Usuario"] = "Anónimo";
+            }
+
+            $row["Tipo"] = $pub_types[$row["Tipo"]];
+            create_entry_dom($row);
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,13 +100,19 @@
                             <div class="d">Nueva publicación</div>
                          -->
                         <div class="forum-header-button colored">
-                            <a class="forum-header-button-text" href="https://google.com">Iniciar sesión</a>
+                            <?php
+                            if ($_SESSION["username"]) {
+                                echo "Bienvenido, " . $_SESSION["username"];
+                            } else {
+                                echo "<a class=\"forum-header-button-text\" href=\"https://google.com\">Iniciar sesión</a>";
+                            }
+                            ?>
                         </div>
                     </header>
                     <hr>
                     <div id="forum-entries-container">
                         <!-- <p>Por el momento no hay quejas sin resolver.</p> -->
-                        <div class="entry" onclick="location.href='#';">
+                        <!-- <div class="entry" onclick="location.href='#';">
                             <div class="entry-title-div">
                                 <p class="entry-title">
                                     <span class="entry-user">Usuario 1:</span>
@@ -80,7 +147,8 @@
                             <p class="entry-brief">
                                 blablablabalbalbalbalbalabalbalablablablblablablablablabla...
                             </p>
-                        </div>
+                        </div> -->
+                        <?php get_entries(); ?>
                     </div>
                 </div>
             </div>

@@ -289,11 +289,11 @@ body {
     color: var(--secondary-color);
 }
 
-.complaint {
+.queja {
     background-color: darkblue;
 }
 
-.suggestion {
+.sugerencia {
     background-color: blue;
 }
 
