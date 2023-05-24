@@ -49,9 +49,6 @@ $connection = connect();
                                 <p class="text-form">Tipo de publicación</p>
                                 <div class="select">
                                     <select>
-                                        <option selected disabled>
-                                            Selecione una opción
-                                        </option>
                                         <?php
                                         $query = "SELECT Nombre FROM Tipo_Publicacion";
                                         $result = mysqli_query($connection, $query);
@@ -68,9 +65,6 @@ $connection = connect();
                                 <p class="text-form">Dirigido a</p>
                                 <div class="select">
                                     <select>
-                                        <option selected disabled>
-                                            Selecione una opción
-                                        </option>
                                         <?php
                                         $query = "SELECT Nombre FROM Area";
                                         $result = mysqli_query($connection, $query);
