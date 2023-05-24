@@ -102,7 +102,7 @@
                         <div class="forum-header-button colored">
                             <?php
                             if ($_SESSION["username"]) {
-                                echo "Bienvenido, " . $_SESSION["username"];
+                                echo "<a class=\"forum-header-button-text\" href=\"#\">Nueva publicación</a>";
                             } else {
                                 echo "<a class=\"forum-header-button-text\" href=\"login.html\">Iniciar sesión</a>";
                             }
