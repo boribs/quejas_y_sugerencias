@@ -74,12 +74,12 @@
                 <img id="BUAP-logo" src="../assets/images/logo-buap-h.png">
             </a>
             <div class="separator"></div>
-            <div class="header-right header-button">
-                <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">Contacto FCC</a>
-            </div>
-            <div class="header-right header-button">
-                <a href="#" class="no-decor">Otra cosa</a>
-            </div>
+            <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">
+                <div class="header-right header-button">Contacto FCC</div>
+            </a>
+            <a href="#" class="no-decor">
+                <div class="header-right header-button">Otra cosa</div>
+            </a>
         </header>
 
         <main>
