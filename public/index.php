@@ -70,7 +70,7 @@
 <body>
     <div id="header-and-main">
         <header id="top-header" class="row">
-            <a href="https://www.buap.mx">
+            <a href="https://www.buap.mx" target="_blank">
                 <img id="BUAP-logo" src="../assets/images/logo-buap-h.png">
             </a>
             <div class="separator"></div>
