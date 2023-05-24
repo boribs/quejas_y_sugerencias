@@ -75,7 +75,7 @@
             </a>
             <div class="separator"></div>
             <div class="header-right header-button">
-                <a href="#" class="no-decor">Contacto FCC</a>
+                <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">Contacto FCC</a>
             </div>
             <div class="header-right header-button">
                 <a href="#" class="no-decor">Otra cosa</a>
