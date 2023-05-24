@@ -6,6 +6,9 @@
         $username = $row["Usuario"];
         $title = $row["Titulo"];
         $content = $row["Comentario"];
+        if (strlen($content) > 150) {
+            $content = substr($content, 0, 150) . "...";
+        }
         $type = $row["Tipo"];
         $type_class = strtolower($type);
 
