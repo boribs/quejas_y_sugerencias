@@ -13,21 +13,17 @@
     $query = "SELECT COUNT(*) as contar FROM usuario WHERE correo = '$email' AND contrasena = '$clave'";
     $result = mysqli_query($connection, $query);
 
-    if ($result === false)
-    {
+    if ($result === false) {
         echo "Error en la consulta: " . mysqli_error($connection);
         exit;
     }
 
     $array = mysqli_fetch_array($result);
-    if($array && $array['contar'] > 0)
-    {
+    if($array && $array['contar'] > 0) {
         $_SESSION['email'] = $email;
         header("location: ../../public/index.php");
         exit();
-    }
-    else
-    {
+    } else {
         echo "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.";
         header("location: ../../public/login.php");
     }
