@@ -18,7 +18,7 @@
     }
 
     $array = mysqli_fetch_array($result);
-    if($array) {
+    if ($array) {
         $_SESSION['username'] = $array["Nombre"];
         header("location: ../../public/index.php");
         exit();
