@@ -6,13 +6,15 @@
         $username = $row["Usuario"];
         $title = $row["Titulo"];
         $content = $row["Comentario"];
+        $type = $row["Tipo"];
+        $type_class = strtolower($type);
 
         echo "<div class=\"entry\" onclick=\"location.href='#';\">
                  <div class=\"entry-title-div\">
                      <p class=\"entry-title\">
                          <span class=\"entry-user\">$username:</span>
                          $title
-                         <span class=\"entry-category suggestion\">Sugerencia</span>
+                         <span class=\"entry-category $type_class\">$type</span>
                      </p>
                  </div>
                  <p class=\"entry-brief\">
@@ -48,6 +50,7 @@
                 $row["Usuario"] = "Anónimo";
             }
 
+            $row["Tipo"] = $pub_types[$row["Tipo"]];
             create_entry_dom($row);
         }
     }
