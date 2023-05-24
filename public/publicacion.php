@@ -5,7 +5,7 @@ if (!$_SESSION["username"]) {
     header("location: ../../public/login.html");
 }
 
-require('connection.php');
+require('../src/connection.php');
 $connection = connect();
 ?>
 
@@ -52,12 +52,15 @@ $connection = connect();
                                         <option selected disabled>
                                             Selecione una opción
                                         </option>
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                        <option>option 6</option>
+                                        <?php
+                                        $query = "SELECT Nombre FROM Tipo_Publicacion";
+                                        $result = mysqli_query($connection, $query);
+
+                                        while (($row = mysqli_fetch_array($result))) {
+                                            $nombre = $row["Nombre"];
+                                            echo "<option value=\"$nombre\">$nombre</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
