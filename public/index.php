@@ -95,10 +95,6 @@
                             <div id="search-bar-button"><img src="../assets/images/icono-buscar.png"></div>
                         </div>
                         <div class="separator"></div>
-                        <!--
-                            Si ya inició sesión:
-                            <div class="d">Nueva publicación</div>
-                         -->
                         <div class="forum-header-button colored">
                             <?php
                             if ($_SESSION["username"]) {

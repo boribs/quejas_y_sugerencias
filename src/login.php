@@ -8,7 +8,6 @@
 
     echo("-$email-<br>");
     echo("-$clave-<br>");
-    /*Generar un query para que mande el email y el nombre del ususario el cual sera usado para que muestre en pantalla lo que es */
 
     $query = "SELECT Nombre FROM usuario WHERE correo = '$email' AND contrasena = '$clave'";
     $result = mysqli_query($connection, $query);
