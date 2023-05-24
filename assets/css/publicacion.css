@@ -125,13 +125,17 @@ select::-ms-expand {
 
 .select {
     position: relative;
+    overflow: hidden;
+
     display: flex;
+    justify-content: center;
+
     width: 15rem;
     height: 2rem;
     line-height: 2;
+
     background: var(--secondary-color);
-    overflow: hidden;
-    justify-content: center;
+    border-radius: 0.3rem;
 }
 
 .select::after {
@@ -245,6 +249,7 @@ select::-ms-expand {
 
     background-color: var(--darker-blue-buap);
     border: none;
+    border-radius: 0.3rem;
 
     width: 15rem;
     height: 3rem;
