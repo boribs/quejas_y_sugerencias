@@ -87,9 +87,9 @@ $connection = connect();
                         <hr>
                         <div class="message-area">
                             <p class="text-form">Título de publicación</p>
-                            <textarea class="title-area" id="msg" name="title"></textarea>
+                            <textarea class="title-area" id="msg" name="title" required></textarea>
                             <p class="text-form">Explique su publicación</p>
-                            <textarea class="text-area" id="msg" name="message"></textarea>
+                            <textarea class="text-area" id="cmt" name="comment" required></textarea>
                         </div>
                         <hr>
                         <div class="evidence-area">
