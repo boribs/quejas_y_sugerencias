@@ -95,16 +95,12 @@
                             <div id="search-bar-button"><img src="../assets/images/icono-buscar.png"></div>
                         </div>
                         <div class="separator"></div>
-                        <!--
-                            Si ya inició sesión:
-                            <div class="d">Nueva publicación</div>
-                         -->
                         <div class="forum-header-button colored">
                             <?php
                             if ($_SESSION["username"]) {
-                                echo "Bienvenido, " . $_SESSION["username"];
+                                echo "<a class=\"forum-header-button-text\" href=\"#\">Nueva publicación</a>";
                             } else {
-                                echo "<a class=\"forum-header-button-text\" href=\"https://google.com\">Iniciar sesión</a>";
+                                echo "<a class=\"forum-header-button-text\" href=\"login.html\">Iniciar sesión</a>";
                             }
                             ?>
                         </div>
