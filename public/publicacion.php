@@ -42,7 +42,7 @@ $connection = connect();
         <main>
             <div id="main-content">
                 <div id="forum-container">
-                    <form id="publication-form" action="procesar.php" method="post" enctype="multipart/form-data">
+                    <form id="publication-form" action="../src/procesar.php" method="post" enctype="multipart/form-data">
                         <h1>Nueva publicación</h1>
                         <div class="option-area">
                             <div class="publication-option">
