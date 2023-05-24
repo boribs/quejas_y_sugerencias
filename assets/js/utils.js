@@ -10,6 +10,19 @@ function returnFileSize(number) {
     }
 }
 
+function removeFile(filename, input) {
+    const dt = new DataTransfer();
+
+    for (let i = 0; i < input.files.length; ++i) {
+        if (input.files[i].name != filename) {
+            dt.items.add(input.files[i]);
+        }
+    }
+
+    input.files = dt.files;
+    updateImageDisplay();
+}
+
 function updateImageDisplay() {
     const preview = document.getElementById('evidence-preview');
     const input = document.getElementById('button-evidence-input');
@@ -20,11 +33,7 @@ function updateImageDisplay() {
 
     const curFiles = input.files;
 
-    if (curFiles.length === 0) {
-        const para = document.createElement('p');
-        para.textContent = 'No files currently selected for upload';
-        preview.appendChild(para);
-    } else {
+    if (curFiles.length !== 0) {
         const list = document.createElement('ul');
         preview.appendChild(list);
 
@@ -37,7 +46,12 @@ function updateImageDisplay() {
             const filename = document.createElement('p');
             filename.textContent = file.name;
             const filesize = document.createElement('p');
-            filesize.textContent = returnFileSize(file.size);
+            filesize.textContent = `${returnFileSize(file.size)} - `;
+
+            const a = document.createElement('a');
+            a.onclick = function() {removeFile(file.name, input);}
+            a.textContent = 'Eliminar';
+            filesize.append(a);
 
             const image = document.createElement('img');
             image.src = URL.createObjectURL(file);
