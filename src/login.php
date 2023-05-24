@@ -10,7 +10,7 @@
     echo("-$clave-<br>");
     /*Generar un query para que mande el email y el nombre del ususario el cual sera usado para que muestre en pantalla lo que es */
 
-    $query = "SELECT COUNT(*) as contar FROM usuario WHERE correo = '$email' AND contrasena = '$clave'";
+    $query = "SELECT Nombre FROM usuario WHERE correo = '$email' AND contrasena = '$clave'";
     $result = mysqli_query($connection, $query);
 
     if ($result === false) {
@@ -19,7 +19,7 @@
     }
 
     $array = mysqli_fetch_array($result);
-    if($array && $array['contar'] > 0) {
+    if($array) {
         $_SESSION['email'] = $email;
         header("location: ../../public/index.php");
         exit();
