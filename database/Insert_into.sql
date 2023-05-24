@@ -29,10 +29,10 @@ INSERT INTO Area (Nombre, Descripcion) VALUES ('Salones', 'Área destinada a la 
 INSERT INTO Area (Nombre, Descripcion) VALUES ('Edificios Administrativos', 'Área destinada a las oficinas y departamentos administrativos');
 INSERT INTO Area (Nombre, Descripcion) VALUES ('Laboratorios', 'Área destinada a la realización de experimentos y actividades prácticas');
 INSERT INTO Area (Nombre, Descripcion) VALUES ('Cafetería', 'Área destinada a la venta de alimentos y bebidas');
-INSERT INTO Area (Nombre, Descripcion) VALUES ('Departamento de Informática', 'Área encargada de la gestión y desarrollo de sistemas informáticos');
-INSERT INTO Area (Nombre, Descripcion) VALUES ('Departamento de Recursos Humanos', 'Área encargada de la gestión del personal y recursos humanos');
-INSERT INTO Area (Nombre, Descripcion) VALUES ('Departamento de Finanzas', 'Área encargada de la gestión financiera y contabilidad');
-INSERT INTO Area (Nombre, Descripcion) VALUES ('Departamento de Investigación', 'Área dedicada a la investigación científica y desarrollo de proyectos');
+INSERT INTO Area (Nombre, Descripcion) VALUES ('D. de Informática', 'Área encargada de la gestión y desarrollo de sistemas informáticos');
+INSERT INTO Area (Nombre, Descripcion) VALUES ('D. de Recursos Humanos', 'Área encargada de la gestión del personal y recursos humanos');
+INSERT INTO Area (Nombre, Descripcion) VALUES ('D. de Finanzas', 'Área encargada de la gestión financiera y contabilidad');
+INSERT INTO Area (Nombre, Descripcion) VALUES ('D. de Investigación', 'Área dedicada a la investigación científica y desarrollo de proyectos');
 INSERT INTO Area (Nombre, Descripcion) VALUES ('Centro de Estudiantes', 'Área dedicada a brindar apoyo y servicios a los estudiantes');
 INSERT INTO Area (Nombre, Descripcion) VALUES ('Auditorio', 'Espacio destinado a la realización de eventos y conferencias');
 
