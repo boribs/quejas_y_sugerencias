@@ -93,18 +93,20 @@ $connection = connect();
                         </div>
                         <hr>
                         <div class="evidence-area">
-                                <label id="button-evidence-label">
-                                    <input id="button-evidence-input" type="file" name="fotos" accept="video/*,image/*" multiple>
-                                    Adjuntar evidencia
-                                </label>
-                                <div id="evidence-preview"></div>
+                            <label id="button-evidence-label">
+                                <input id="button-evidence-input" type="file" name="fotos" accept="video/*,image/*" multiple>
+                                Adjuntar evidencia
+                            </label>
+                            <div id="evidence-preview"></div>
                         </div>
                         <hr>
                         <div class="button-area">
-                            <button type="submit" name="cancelar" class="button--area">
-                                Cancelar
-                            </button>
-                            <button type="submit" name="enviar" class="button--area">
+                            <a href="index.php">
+                                <button class="button--area" form="none">
+                                    Cancelar
+                                </button>
+                            </a>
+                            <button type="submit" name="enviar" value="1" class="button--area">
                                 Enviar
                             </button>
                         </div>
