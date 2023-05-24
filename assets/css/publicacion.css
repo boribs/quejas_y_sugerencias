@@ -207,9 +207,16 @@ select::-ms-expand {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.evidence-area img {
-    width: 3rem;
-    height: 3rem;
+#evidence-preview li {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: baseline;
+}
+
+#evidence-preview img {
+    width: 9rem;
+    height: 9rem;
 }
 
 #button-evidence-label {
@@ -231,6 +238,10 @@ select::-ms-expand {
 
 #button-evidence-input {
     display: none;
+}
+
+.no-marker {
+    list-style-type: none;
 }
 
 /*Botones de enviar y cancelar*/
