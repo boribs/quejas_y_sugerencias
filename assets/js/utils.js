@@ -48,10 +48,10 @@ function updateImageDisplay() {
             const filesize = document.createElement('p');
             filesize.textContent = `${returnFileSize(file.size)} - `;
 
-            const a = document.createElement('a');
-            a.onclick = function() {removeFile(file.name, input);}
-            a.textContent = 'Eliminar';
-            filesize.append(a);
+            const span = document.createElement('span');
+            span.onclick = function() {removeFile(file.name, input);}
+            span.textContent = 'Eliminar';
+            filesize.append(span);
 
             const image = document.createElement('img');
             image.src = URL.createObjectURL(file);
