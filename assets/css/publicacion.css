@@ -217,6 +217,17 @@ select::-ms-expand {
 #evidence-preview img {
     width: 9rem;
     height: 9rem;
+    margin: 1rem;
+}
+
+#evidence-preview span {
+    color: gray;
+    text-decoration: underline;
+}
+
+#evidence-preview span:hover {
+    color: darkgray;
+    cursor: pointer;
 }
 
 #button-evidence-label {
