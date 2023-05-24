@@ -65,18 +65,21 @@ $connection = connect();
                                 </div>
                             </div>
                             <div class="department-option">
-                                <p class="text-form">Departamento dirigido</p>
+                                <p class="text-form">Dirigido a</p>
                                 <div class="select">
                                     <select>
                                         <option selected disabled>
                                             Selecione una opción
                                         </option>
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                        <option>option 6</option>
+                                        <?php
+                                        $query = "SELECT Nombre FROM Area";
+                                        $result = mysqli_query($connection, $query);
+
+                                        while (($row = mysqli_fetch_array($result))) {
+                                            $nombre = $row["Nombre"];
+                                            echo "<option value=\"$nombre\">$nombre</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
