@@ -48,14 +48,15 @@ $connection = connect();
                             <div class="publication-option">
                                 <p class="text-form">Tipo de publicación</p>
                                 <div class="select">
-                                    <select>
+                                    <select name="type">
                                         <?php
-                                        $query = "SELECT Nombre FROM Tipo_Publicacion";
+                                        $query = "SELECT Id, Nombre FROM Tipo_Publicacion";
                                         $result = mysqli_query($connection, $query);
 
                                         while (($row = mysqli_fetch_array($result))) {
                                             $nombre = $row["Nombre"];
-                                            echo "<option value=\"$nombre\">$nombre</option>";
+                                            $id = $row["Id"];
+                                            echo "<option value=\"$id\">$nombre</option>";
                                         }
                                         ?>
                                     </select>
@@ -66,12 +67,13 @@ $connection = connect();
                                 <div class="select">
                                     <select name="area">
                                         <?php
-                                        $query = "SELECT Nombre FROM Area";
+                                        $query = "SELECT Id, Nombre FROM Area";
                                         $result = mysqli_query($connection, $query);
 
                                         while (($row = mysqli_fetch_array($result))) {
                                             $nombre = $row["Nombre"];
-                                            echo "<option value=\"$nombre\">$nombre</option>";
+                                            $id = $row["Id"];
+                                            echo "<option value=\"$id\">$nombre</option>";
                                         }
                                         ?>
                                     </select>
