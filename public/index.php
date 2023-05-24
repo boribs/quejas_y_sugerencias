@@ -104,7 +104,7 @@
                             if ($_SESSION["username"]) {
                                 echo "Bienvenido, " . $_SESSION["username"];
                             } else {
-                                echo "<a class=\"forum-header-button-text\" href=\"https://google.com\">Iniciar sesión</a>";
+                                echo "<a class=\"forum-header-button-text\" href=\"login.html\">Iniciar sesión</a>";
                             }
                             ?>
                         </div>
