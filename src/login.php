@@ -20,7 +20,7 @@
 
     $array = mysqli_fetch_array($result);
     if($array) {
-        $_SESSION['email'] = $email;
+        $_SESSION['username'] = $array["Nombre"];
         header("location: ../../public/index.php");
         exit();
     } else {
