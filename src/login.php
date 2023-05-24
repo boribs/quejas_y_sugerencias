@@ -25,7 +25,8 @@
         exit();
     } else {
         echo "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.";
-        header("location: ../../public/login.php");
+        header("location: ../../public/login.html");
     }
+
     mysqli_close($connection);
 ?>
