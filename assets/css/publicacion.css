@@ -214,9 +214,9 @@ select::-ms-expand {
     justify-content: baseline;
 }
 
-#evidence-preview img {
-    width: 9rem;
-    height: 9rem;
+#evidence-preview img,
+#evidence-preview video {
+    max-width: 10rem;
     margin: 1rem;
 }
 

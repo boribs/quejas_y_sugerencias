@@ -62,7 +62,6 @@ function updateImageDisplay() {
         for (const file of curFiles) {
             const listItem = document.createElement('li');
 
-            // if (validFileType(file)) {
             listItem.classList.add('no-marker');
             const div = document.createElement('div');
             const filename = document.createElement('p');
@@ -71,21 +70,17 @@ function updateImageDisplay() {
             filesize.textContent = `${returnFileSize(file.size)} - `;
 
             const span = document.createElement('span');
-            span.onclick = function() {removeFile(file.name, input);}
+            span.onclick = function () { removeFile(file.name, input); }
             span.textContent = 'Eliminar';
             filesize.append(span);
 
-            const image = document.createElement('img');
-            image.src = URL.createObjectURL(file);
+            const media = document.createElement(file.type.startsWith('image') ? 'img' : 'video');
+            media.src = URL.createObjectURL(file);
 
             div.appendChild(filename);
             div.appendChild(filesize);
-            listItem.appendChild(image);
+            listItem.appendChild(media);
             listItem.appendChild(div);
-            // } else {
-            //     para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
-            //     listItem.appendChild(para);
-            // }
 
             list.appendChild(listItem);
         }
