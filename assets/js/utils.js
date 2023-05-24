@@ -40,7 +40,7 @@ function returnFileSize(number) {
 }
 
 /**
- * Actualiza DOM - crea una lista de imagenes con su información.
+ * Actualiza DOM - crea una lista de imagenes/videos con su información.
  * Debe llamarse después de seleccionar imagenes con `button-evidence-input`.
  *
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
