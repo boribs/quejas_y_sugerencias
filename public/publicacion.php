@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (!$_SESSION["username"]) {
+    header("location: ../../public/login.html");
+}
+
+require('connection.php');
+$connection = connect();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,7 +93,6 @@
                         </div>
                         <hr>
                         <div class="evidence-area">
-                                <!-- <p class="text-form">¿Cuenta con evidencia? Adjúntela aquí.</p> -->
                                 <label id="button-evidence-label">
                                     <input id="button-evidence-input" type="file" name="fotos" accept="video/*,image/*" multiple>
                                     Adjuntar evidencia
