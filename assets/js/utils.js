@@ -1,3 +1,5 @@
+document.getElementById('button-evidence-input').addEventListener('change', updateImageDisplay);
+
 /**
  * Elimina un objeto de los seleccionados en `input`.
  * Llama `updateImageDisplay` al terminar.
@@ -86,5 +88,3 @@ function updateImageDisplay() {
         }
     }
 }
-
-document.getElementById('button-evidence-input').addEventListener('change', updateImageDisplay);
