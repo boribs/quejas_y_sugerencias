@@ -27,7 +27,10 @@ foreach ($_FILES["evidencia"]["error"] as $key => $error) {
             $ext = pathinfo($name, PATHINFO_EXTENSION);
             $name = uniqid() . ".$ext";
         }
-        move_uploaded_file($tmp_name, EVIDENCE_PATH . "$name");
+
+        array_push($evidence_files, $name);
+        $path = EVIDENCE_PATH . "$name";
+        move_uploaded_file($tmp_name, $path);
     }
 }
 
