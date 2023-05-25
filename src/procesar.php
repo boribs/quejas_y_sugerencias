@@ -5,6 +5,9 @@ if (!$_SESSION["username"]) {
     header("location: ../public/index.php");
 }
 
+define("EVIDENCE_PATH", "../public/evidence/");
+$evidence_files = scandir(EVIDENCE_PATH);
+
 require("connection.php");
 
 $user_id = $_SESSION["id"];
@@ -19,6 +22,11 @@ foreach ($_FILES["evidencia"]["error"] as $key => $error) {
     if ($error == UPLOAD_ERR_OK) {
         $tmp_name = $_FILES["evidencia"]["tmp_name"][$key];
         $name = $_FILES["evidencia"]["name"][$key];
+
+        while (in_array($name, $evidence_files)) {
+            $ext = pathinfo($name, PATHINFO_EXTENSION);
+            $name = uniqid() . ".$ext";
+        }
         move_uploaded_file($tmp_name, EVIDENCE_PATH . "$name");
     }
 }
