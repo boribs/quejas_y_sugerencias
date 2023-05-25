@@ -27,8 +27,8 @@ $connection = connect();
             <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">
                 <div class="header-right header-button">Contacto FCC</div>
             </a>
-            <a href="#" class="no-decor">
-                <div class="header-right header-button">Otra cosa</div>
+            <a href="../src/logout.php" class="no-decor">
+                <div class="header-right header-button">Cerrar sesión</div>
             </a>
             <!-- <div class="header-right">Contacto FCC</div>
             <div class="header-right">

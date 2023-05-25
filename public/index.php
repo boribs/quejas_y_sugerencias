@@ -77,8 +77,12 @@
             <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">
                 <div class="header-right header-button">Contacto FCC</div>
             </a>
-            <a href="#" class="no-decor">
-                <div class="header-right header-button">Otra cosa</div>
+            <a href="../src/logout.php" class="no-decor">
+                <?php
+                if ($_SESSION["username"]) {
+                    echo "<div class=\"header-right header-button\">Cerrar sesión</div>";
+                }
+                ?>
             </a>
         </header>
 
