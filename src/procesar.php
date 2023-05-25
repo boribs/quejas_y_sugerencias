@@ -48,23 +48,13 @@ foreach ($_FILES["evidencia"]["error"] as $key => $error) {
         array_push($evidence_files, $name);
         $path = EVIDENCE_PATH . "$name";
         move_uploaded_file($tmp_name, $path);
+
+        $query = "INSERT INTO Catalogo_Evidencia (Nombre, Id_Publicacion) VALUES (\"$path\", $pub_id)";
+        if (!mysqli_query($connection, $query)) {
+            // Error
+            echo "Error 3!";
+        }
     }
-}
-
-if (!$title || !$comment) {
-    // Error
-    echo "Error 1!";
-}
-
-$connection = connect();
-$query = "INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, Id_Area, Resuelto, Anonimo) " .
-         "VALUES ($type, $user_id, \"$title\", \"$comment\", CURDATE(), $area, FALSE, $anonymus)";
-
-echo "<br>" . $query;
-
-if (!mysqli_query($connection, $query)) {
-    // Error
-    echo "Error 2!";
 }
 
 mysqli_close($connection);
