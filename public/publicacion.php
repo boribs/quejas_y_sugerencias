@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (!$_SESSION["username"]) {
+    header("location: ../../public/login.html");
+}
+
+require('../src/connection.php');
+$connection = connect();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,16 +20,16 @@
 <body>
     <div id="header-and-main">
         <header id="top-header" class="row">
-            <a href="https://www.buap.mx">
+            <a href="https://www.buap.mx" target="_blank">
                 <img id="BUAP-logo" src="../assets/images/logo-buap-h.png">
             </a>
             <div class="separator"></div>
-            <div class="header-right header-button">
-                <a href="#" class="no-decor">Contacto FCC</a>
-            </div>
-            <div class="header-right header-button">
-                <a href="#" class="no-decor">Otra cosa</a>
-            </div>
+            <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">
+                <div class="header-right header-button">Contacto FCC</div>
+            </a>
+            <a href="#" class="no-decor">
+                <div class="header-right header-button">Otra cosa</div>
+            </a>
             <!-- <div class="header-right">Contacto FCC</div>
             <div class="header-right">
                 <a href="index.html">
@@ -31,66 +42,73 @@
         <main>
             <div id="main-content">
                 <div id="forum-container">
-                    <form id="publication-form" action="procesar.php" method="post" enctype="multipart/form-data">
+                    <form id="publication-form" action="../src/procesar.php" method="post" enctype="multipart/form-data">
                         <h1>Nueva publicación</h1>
                         <div class="option-area">
                             <div class="publication-option">
                                 <p class="text-form">Tipo de publicación</p>
                                 <div class="select">
-                                    <select>
-                                        <option selected disabled>
-                                            Selecione una opción
-                                        </option>
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                        <option>option 6</option>
+                                    <select name="type">
+                                        <?php
+                                        $query = "SELECT Id, Nombre FROM Tipo_Publicacion";
+                                        $result = mysqli_query($connection, $query);
+
+                                        while (($row = mysqli_fetch_array($result))) {
+                                            $nombre = $row["Nombre"];
+                                            $id = $row["Id"];
+                                            echo "<option value=\"$id\">$nombre</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="department-option">
-                                <p class="text-form">Departamento dirigido</p>
+                                <p class="text-form">Dirigido a</p>
                                 <div class="select">
-                                    <select>
-                                        <option selected disabled>
-                                            Selecione una opción
-                                        </option>
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                        <option>option 6</option>
+                                    <select name="area">
+                                        <?php
+                                        $query = "SELECT Id, Nombre FROM Area";
+                                        $result = mysqli_query($connection, $query);
+
+                                        while (($row = mysqli_fetch_array($result))) {
+                                            $nombre = $row["Nombre"];
+                                            $id = $row["Id"];
+                                            echo "<option value=\"$id\">$nombre</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="anonymous-option">
                                 <p class="text-form">Publicacion anónima</p>
                                 <div class="checkbox">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="anonymus">
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="message-area">
                             <p class="text-form">Título de publicación</p>
-                            <textarea class="title-area" id="msg" name="title"></textarea>
+                            <textarea class="title-area" id="msg" name="title" required></textarea>
                             <p class="text-form">Explique su publicación</p>
-                            <textarea class="text-area" id="msg" name="message"></textarea>
+                            <textarea class="text-area" id="cmt" name="comment" required></textarea>
                         </div>
                         <hr>
                         <div class="evidence-area">
-                                <p class="text-form">¿Cuenta con evidencia? Adjúntela aquí.</p>
-                                <input class="button-evidence" type="file" name="fotos" multiple>
+                            <label id="button-evidence-label">
+                                <input id="button-evidence-input" type="file" name="evidencia[]" accept="video/*,image/*" multiple>
+                                Adjuntar evidencia
+                            </label>
+                            <div id="evidence-preview"></div>
                         </div>
                         <hr>
                         <div class="button-area">
-                            <button type="submit" name="cancelar" class="button--area">
-                                Cancelar
-                            </button>
-                            <button type="submit" name="enviar" class="button--area">
+                            <a href="index.php">
+                                <button class="button--area" form="none">
+                                    Cancelar
+                                </button>
+                            </a>
+                            <button type="submit" name="enviar" value="1" class="button--area">
                                 Enviar
                             </button>
                         </div>
@@ -113,4 +131,5 @@
         <div class="footer-text-element">Irving Hernández</div>
     </footer>
 </body>
+<script type="text/javascript" src="../assets/js/utils.js"></script>
 </html>

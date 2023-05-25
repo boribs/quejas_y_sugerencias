@@ -82,7 +82,7 @@ CREATE TABLE Catalogo_Respuesta (
   FOREIGN KEY (Id_Respuesta) REFERENCES Respuesta_Publicacion (Id)
 );
 
-CREATE TABLE Catalogo_foto (
+CREATE TABLE Catalogo_Evidencia (
   Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   Nombre VARCHAR(255) NOT NULL,
   Id_Publicacion INT NOT NULL,

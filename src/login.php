@@ -9,7 +9,7 @@
     echo("-$email-<br>");
     echo("-$clave-<br>");
 
-    $query = "SELECT Nombre FROM usuario WHERE correo = '$email' AND contrasena = '$clave'";
+    $query = "SELECT Id, Nombre FROM usuario WHERE correo = '$email' AND contrasena = '$clave'";
     $result = mysqli_query($connection, $query);
 
     if ($result === false) {
@@ -18,8 +18,9 @@
     }
 
     $array = mysqli_fetch_array($result);
-    if($array) {
+    if ($array) {
         $_SESSION['username'] = $array["Nombre"];
+        $_SESSION['id'] = $array["Id"];
         header("location: ../../public/index.php");
         exit();
     } else {
