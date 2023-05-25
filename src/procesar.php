@@ -9,6 +9,7 @@ define("EVIDENCE_PATH", "../public/evidence/");
 $evidence_files = scandir(EVIDENCE_PATH);
 
 require("connection.php");
+$connection = connect();
 
 $user_id = $_SESSION["id"];
 $title = trim($_POST["title"]);
