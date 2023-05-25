@@ -15,6 +15,14 @@ $area = $_POST["area"];
 $anonymus = $_POST["anonymus"] == "on" ? "TRUE" : "FALSE";
 // $mediacount = $_POST["mediacount"];
 
+foreach ($_FILES["evidencia"]["error"] as $key => $error) {
+    if ($error == UPLOAD_ERR_OK) {
+        $tmp_name = $_FILES["evidencia"]["tmp_name"][$key];
+        $name = $_FILES["evidencia"]["name"][$key];
+        move_uploaded_file($tmp_name, EVIDENCE_PATH . "$name");
+    }
+}
+
 if (!$title || !$comment) {
     // Error
     echo "Error 1!";
