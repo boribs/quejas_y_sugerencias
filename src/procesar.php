@@ -18,6 +18,23 @@ $area = $_POST["area"];
 $anonymus = $_POST["anonymus"] == "on" ? "TRUE" : "FALSE";
 // $mediacount = $_POST["mediacount"];
 
+if (!$title || !$comment) {
+    // Error
+    echo "Error 1!";
+}
+
+$query = "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES
+          WHERE TABLE_SCHEMA = 'quejas_sugerencias_db' AND TABLE_NAME = 'Publicacion'";
+$pub_id = mysqli_fetch_array(mysqli_query($connection, $query))["AUTO_INCREMENT"];
+
+$query = "INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, Id_Area, Resuelto, Anonimo) " .
+         "VALUES ($type, $user_id, \"$title\", \"$comment\", CURDATE(), $area, FALSE, $anonymus)";
+
+if (!mysqli_query($connection, $query)) {
+    // Error
+    echo "Error 2!";
+}
+
 foreach ($_FILES["evidencia"]["error"] as $key => $error) {
     if ($error == UPLOAD_ERR_OK) {
         $tmp_name = $_FILES["evidencia"]["tmp_name"][$key];
