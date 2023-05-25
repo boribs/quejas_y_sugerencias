@@ -11,12 +11,6 @@ CREATE TABLE Tipo_Publicacion (
   Nombre VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Categoria (
-  Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  Nombre VARCHAR(255) NOT NULL,
-  Descripcion VARCHAR(255) NOT NULL
-);
-
 CREATE TABLE Area (
   Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   Nombre VARCHAR(255) NOT NULL,
@@ -56,22 +50,6 @@ CREATE TABLE Respuesta_Publicacion (
   Comentario VARCHAR(255) NOT NULL,
   Fecha DATE NOT NULL,
   FOREIGN KEY (Id_Usuario) REFERENCES Usuario(Id)
-);
-
-CREATE TABLE Catalogo_Categoria_Publicacion (
-  Id_Publicacion INT NOT NULL,
-  Id_Categoria INT NOT NULL,
-  PRIMARY KEY (Id_Publicacion, Id_Categoria),
-  FOREIGN KEY (Id_Publicacion) REFERENCES Publicacion(Id),
-  FOREIGN KEY (Id_Categoria) REFERENCES Categoria(Id)
-);
-
-CREATE TABLE Catalogo_Usuario_Area (
-  Id_Usuario INT NOT NULL,
-  Id_Area INT NOT NULL,
-  PRIMARY KEY (Id_Usuario, Id_Area),
-  FOREIGN KEY (Id_Usuario) REFERENCES Usuario(Id),
-  FOREIGN KEY (Id_Area) REFERENCES Area(Id)
 );
 
 CREATE TABLE Catalogo_Respuesta (
