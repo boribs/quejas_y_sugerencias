@@ -96,7 +96,7 @@ $connection = connect();
                         <hr>
                         <div class="evidence-area">
                             <label id="button-evidence-label">
-                                <input id="button-evidence-input" type="file" name="fotos" accept="video/*,image/*" multiple>
+                                <input id="button-evidence-input" type="file" name="evidencia[]" accept="video/*,image/*" multiple>
                                 Adjuntar evidencia
                             </label>
                             <div id="evidence-preview"></div>
