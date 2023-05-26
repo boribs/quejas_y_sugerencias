@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../assets/css/respuesta.css">
+    <title>Quejas FCC | Nueva Publicación</title>
+    <link rel="icon" type="image/png" href="../assets/images/escudo-buap.png">
+</head>
+<body>
+    <div id="header-and-main">
+        <header id="top-header" class="row">
+            <a href="https://www.buap.mx">
+                <img id="BUAP-logo" src="../assets/images/logo-buap-h.png">
+            </a>
+            <div class="separator"></div>
+            <div class="header-right header-button">
+                <a href="#" class="no-decor">Contacto FCC</a>
+            </div>
+            <div class="header-right header-button">
+                <a href="#" class="no-decor">Otra cosa</a>
+            </div>
+            <!-- <div class="header-right">Contacto FCC</div>
+            <div class="header-right">
+                <a href="index.html">
+                    <img class="round-image" src="../assets/images/usuario.png" alt="Descripción de la imagen">
+                </a>
+            </div> -->
+            <!-- Podriamos poner esto para mostrar cuando se logee el usuario y si no dejamos que diga bienvenido -->
+        </header>
+
+        <main>
+            <div id="main-content">
+                <div id="forum-container">
+                    <form id="publication-form" action="procesar_respuesta.php" method="post" enctype="multipart/form-data">
+                        <h1>Respuesta Publicación</h1>
+                        
+                            <div class="comment-box">
+                                <div class="comment-head">
+                                    <h6 class="comment-name by-author">Shinji Ikari</h6>
+                               </div>
+                                <div class="comment-content">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                </div>
+                            </div>
+                        
+
+                        <div class="message-area">
+                            <p class="text-form">Responda a la publicacion</p>
+                            <textarea class="text-area" id="msg" name="message"></textarea>
+                        </div>
+                        <div class="button-area">
+                            <button type="submit" name="cancelar" class="button--area">
+                                Cancelar
+                            </button>
+                            <button type="submit" name="enviar" class="button--area">
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="row">
+        <div class="footer-text-element">BUAP 2023</div>
+        <div class="separator"></div>
+        <div class="footer-text-element">Cristian Gotchev</div>
+        <div class="footer-text-element">Irving Hernández</div>
+    </footer>
+</body>
+</html>
