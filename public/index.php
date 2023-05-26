@@ -37,7 +37,9 @@
             $pub_types[$row["Id"]] = $row["Nombre"];
         }
 
-        $query = "SELECT Tipo, Id_Usuario, Titulo, Comentario, Resuelto, Anonimo FROM Publicacion";
+        $resuelto = $_GET["resuelto"] ? "TRUE" : "FALSE";
+
+        $query = "SELECT Tipo, Id_Usuario, Titulo, Comentario, Anonimo FROM Publicacion WHERE Resuelto = $resuelto";
         $result = mysqli_query($connection, $query);
 
         while (($row = mysqli_fetch_array($result))) {
