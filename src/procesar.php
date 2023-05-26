@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!$_SESSION["username"]) {
+if (!array_key_exists("username", $_SESSION)) {
     header("location: ../public/index.php");
 }
 
