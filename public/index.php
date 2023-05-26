@@ -101,6 +101,17 @@
                             <div id="search-bar-button"><img src="../assets/images/icono-buscar.png"></div>
                         </div>
                         <div class="separator"></div>
+                        <?php
+                        if ($_SESSION["username"]) {
+                            echo "<div class=\"forum-header-button colored\">";
+                            if ($_GET["resuelto"]) {
+                                echo "<a class=\"forum-header-button-text\" href=\"index.php\">Publicaciones pendientes</a>";
+                            } else {
+                                echo "<a class=\"forum-header-button-text\" href=\"index.php?resuelto=1\">Publicaciones resueltas</a>";
+                            }
+                            echo "</div>";
+                        }
+                        ?>
                         <div class="forum-header-button colored">
                             <?php
                             if ($_SESSION["username"]) {
