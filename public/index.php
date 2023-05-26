@@ -37,7 +37,9 @@
             $pub_types[$row["Id"]] = $row["Nombre"];
         }
 
-        $query = "SELECT Tipo, Id_Usuario, Titulo, Comentario, Resuelto, Anonimo FROM Publicacion";
+        $resuelto = $_GET["resuelto"] ? "TRUE" : "FALSE";
+
+        $query = "SELECT Tipo, Id_Usuario, Titulo, Comentario, Anonimo FROM Publicacion WHERE Resuelto = $resuelto";
         $result = mysqli_query($connection, $query);
 
         while (($row = mysqli_fetch_array($result))) {
@@ -99,6 +101,17 @@
                             <div id="search-bar-button"><img src="../assets/images/icono-buscar.png"></div>
                         </div>
                         <div class="separator"></div>
+                        <?php
+                        if ($_SESSION["username"]) {
+                            echo "<div class=\"forum-header-button colored\">";
+                            if ($_GET["resuelto"]) {
+                                echo "<a class=\"forum-header-button-text\" href=\"index.php\">Publicaciones pendientes</a>";
+                            } else {
+                                echo "<a class=\"forum-header-button-text\" href=\"index.php?resuelto=1\">Publicaciones resueltas</a>";
+                            }
+                            echo "</div>";
+                        }
+                        ?>
                         <div class="forum-header-button colored">
                             <?php
                             if ($_SESSION["username"]) {
