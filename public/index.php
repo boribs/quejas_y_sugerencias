@@ -37,7 +37,7 @@
             $pub_types[$row["Id"]] = $row["Nombre"];
         }
 
-        $resuelto = $_GET["resuelto"] ? "TRUE" : "FALSE";
+        $resuelto = array_key_exists("resuelto", $_GET) ? "TRUE" : "FALSE";
 
         $query = "SELECT Tipo, Id_Usuario, Titulo, Comentario, Anonimo FROM Publicacion WHERE Resuelto = $resuelto";
         $result = mysqli_query($connection, $query);
@@ -81,7 +81,7 @@
             </a>
             <a href="../src/logout.php" class="no-decor">
                 <?php
-                if ($_SESSION["username"]) {
+                if (array_key_exists("username", $_SESSION)) {
                     echo "<div class=\"header-right header-button\">Cerrar sesión</div>";
                 }
                 ?>
@@ -102,9 +102,9 @@
                         </div>
                         <div class="separator"></div>
                         <?php
-                        if ($_SESSION["username"]) {
+                        if (array_key_exists("username", $_SESSION)) {
                             echo "<div class=\"forum-header-button colored\">";
-                            if ($_GET["resuelto"]) {
+                            if (array_key_exists("resuelto", $_GET)) {
                                 echo "<a class=\"forum-header-button-text\" href=\"index.php\">Publicaciones pendientes</a>";
                             } else {
                                 echo "<a class=\"forum-header-button-text\" href=\"index.php?resuelto=1\">Publicaciones resueltas</a>";
@@ -114,7 +114,7 @@
                         ?>
                         <div class="forum-header-button colored">
                             <?php
-                            if ($_SESSION["username"]) {
+                            if (array_key_exists("username", $_SESSION)) {
                                 echo "<a class=\"forum-header-button-text\" href=\"publicacion.php\">Nueva publicación</a>";
                             } else {
                                 echo "<a class=\"forum-header-button-text\" href=\"login.html\">Iniciar sesión</a>";
