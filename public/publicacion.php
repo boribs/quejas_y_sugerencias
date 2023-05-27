@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../assets/css/publicacion_dialogo.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/publicacion.css">
     <title>Quejas FCC | Publicacion</title>
     <link rel="icon" type="image/png" href="../assets/images/escudo-buap.png">
 </head>
