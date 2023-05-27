@@ -156,7 +156,8 @@ body {
 =======================*/
 .comments-container {
    margin: 60px auto 15px;
-   width: 768px;
+   /* width: 768px; */
+   width: 90%;
 }
 
 .comments-container h1 {
@@ -262,6 +263,14 @@ body {
    height: 50px;
 }
 
+.comment-main-level {
+   width: 100%;
+
+   display: flex;
+   align-items: normal;
+   /* justify-content: center; */
+}
+
 .comment-main-level:after {
    content: '';
    width: 0;
@@ -273,9 +282,11 @@ body {
 * Caja del Comentario
 ---------------------------*/
 .comments-list .comment-box {
-   width: 680px;
-   float: right;
    position: relative;
+
+   width: 100%;
+   /* float: right; */
+
    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
@@ -377,15 +388,15 @@ body {
 * Responsive intento
 ========================*/
 @media only screen and (max-width: 766px) {
-    .comments-container {
-        width: 480px;
-    }
+   .comments-container {
+      width: 90%;
+   }
 
-    .comments-list .comment-box {
-        width: 390px;
-    }
+   .comments-list .comment-box {
+      width: 90%;
+   }
 
-    .reply-list .comment-box {
-        width: 320px;
-    }
+   .reply-list .comment-box {
+      width: 320px;
+   }
  }
