@@ -33,7 +33,7 @@
                 <div id="forum-container">
                     <div class="comments-container">
                         <h1>Titulo Publicacion</h1>
-                    
+
                         <ul id="comments-list" class="comments-list">
                             <li>
                                 <div class="comment-main-level">
@@ -87,7 +87,7 @@
                                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
                                             </div>
                                         </div>
-                                    </li> 
+                                    </li>
 
                                     <li>
                                         <!-- Avatar -->
@@ -97,7 +97,7 @@
                                             <div class="comment-head">
                                                 <h6 class="comment-name by-author">Shinji Ikari</h6>
                                                 <span>25/05/2023 11:13:21</span>
-                                                <i class="fa fa-reply"></i> 
+                                                <i class="fa fa-reply"></i>
                                                 <i class="fa fa-heart"></i> <!--El autor puede o no llevar la identificacion si es estudiante o no, checar esto-->
                                             </div>
                                             <div class="comment-content">
