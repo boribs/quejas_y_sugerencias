@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!$_SESSION["username"]) {
+if (!array_key_exists("username", $_SESSION)) {
     header("location: ../public/index.php");
 }
 
@@ -19,9 +19,23 @@ $area = $_POST["area"];
 $anonymus = $_POST["anonymus"] == "on" ? "TRUE" : "FALSE";
 // $mediacount = $_POST["mediacount"];
 
+// Para mandar la información de vuelta cuando se quiera editar.
+// Probablemente no es la mejor forma de hacerlo, pero
+// funciona bastante bien.
+$redir = "<form id=\"data\" name=\"data\" method=\"post\" action=\"../public/publicacion.php\">" .
+     "<input type=\"hidden\" name=\"title\" value=\"$title\">" .
+     "<input type=\"hidden\" name=\"comment\" value=\"$comment\">" .
+     "<input type=\"hidden\" name=\"type\" value=\"$type\">" .
+     "<input type=\"hidden\" name=\"area\" value=\"$area\">" .
+     "<input type=\"hidden\" name=\"anonymus\" value=\"$anonymus\">" .
+     "</form>" .
+     "<script type=\"text/javascript\">" .
+     "document.getElementById('data').submit();" .
+     "</script>";
+
 if (!$title || !$comment) {
-    // Error
-    echo "Error 1!";
+    echo $redir;
+    exit;
 }
 
 $query = "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES
@@ -32,8 +46,8 @@ $query = "INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, 
          "VALUES ($type, $user_id, \"$title\", \"$comment\", CURDATE(), $area, FALSE, $anonymus)";
 
 if (!mysqli_query($connection, $query)) {
-    // Error
-    echo "Error 2!";
+    echo $redir;
+    exit;
 }
 
 foreach ($_FILES["evidencia"]["error"] as $key => $error) {
@@ -52,8 +66,8 @@ foreach ($_FILES["evidencia"]["error"] as $key => $error) {
 
         $query = "INSERT INTO Catalogo_Evidencia (Nombre, Id_Publicacion) VALUES (\"$path\", $pub_id)";
         if (!mysqli_query($connection, $query)) {
-            // Error
-            echo "Error 3!";
+            echo $redir;
+            exit;
         }
     }
 }
