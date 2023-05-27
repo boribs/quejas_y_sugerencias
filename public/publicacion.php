@@ -5,6 +5,18 @@ if (!array_key_exists("username", $_SESSION)) {
     header("location: ../../public/login.html");
 }
 
+// Se mandó la página con información, seguro hay un error
+if (array_key_exists("title", $_POST)) {
+    $info = true;
+    $title = trim($_POST["title"]);
+    $comment = trim($_POST["comment"]);
+    $type = $_POST["type"];
+    $area = $_POST["area"];
+    $anonymus = $_POST["anonymus"] == "TRUE";
+
+    var_dump($_POST);
+}
+
 require('../src/connection.php');
 $connection = connect();
 ?>
@@ -56,7 +68,11 @@ $connection = connect();
                                         while (($row = mysqli_fetch_array($result))) {
                                             $nombre = $row["Nombre"];
                                             $id = $row["Id"];
-                                            echo "<option value=\"$id\">$nombre</option>";
+                                            if ($info && $type == $id) {
+                                                echo "<option value=\"$id\" selected>$nombre</option>";
+                                            } else {
+                                                echo "<option value=\"$id\">$nombre</option>";
+                                            }
                                         }
                                         ?>
                                     </select>
@@ -73,7 +89,11 @@ $connection = connect();
                                         while (($row = mysqli_fetch_array($result))) {
                                             $nombre = $row["Nombre"];
                                             $id = $row["Id"];
-                                            echo "<option value=\"$id\">$nombre</option>";
+                                            if ($info && $area == $id) {
+                                                echo "<option value=\"$id\" selected>$nombre</option>";
+                                            } else {
+                                                echo "<option value=\"$id\">$nombre</option>";
+                                            }
                                         }
                                         ?>
                                     </select>
@@ -82,16 +102,16 @@ $connection = connect();
                             <div class="anonymous-option">
                                 <p class="text-form">Publicacion anónima</p>
                                 <div class="checkbox">
-                                    <input type="checkbox" name="anonymus">
+                                    <input type="checkbox" name="anonymus" <?php if ($info && $anonymus) { echo "checked"; }?>>
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="message-area">
                             <p class="text-form">Título de publicación</p>
-                            <textarea class="title-area" id="msg" name="title" required></textarea>
+                            <textarea class="title-area" id="msg" name="title" required><?php if($info) { echo "$title"; } ?></textarea>
                             <p class="text-form">Explique su publicación</p>
-                            <textarea class="text-area" id="cmt" name="comment" required></textarea>
+                            <textarea class="text-area" id="cmt" name="comment" required><?php if($info) { echo "$comment"; } ?></textarea>
                         </div>
                         <hr>
                         <div class="evidence-area">
