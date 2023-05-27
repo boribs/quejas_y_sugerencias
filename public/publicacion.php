@@ -1,3 +1,40 @@
+<?php
+
+session_start();
+
+if (!array_key_exists("username", $_SESSION)) {
+    header("location: ../public/index.php");
+}
+
+if (!array_key_exists("id", $_GET)) { // si no está la id, regresa
+    header("location: ../public/index.php");
+}
+
+require("../src/connection.php");
+$connection = connect();
+$id = $_GET["id"];
+
+$query = "SELECT Titulo, Comentario, Fecha, Anonimo, (SELECT Nombre FROM Usuario WHERE Id=$id) as Usuario FROM Publicacion WHERE Id = $id";
+
+$result = mysqli_query($connection, $query);
+
+if (!$result) {
+    // Error!
+}
+
+$row = mysqli_fetch_array($result);
+
+// var_dump($row);
+
+$title = $row["Titulo"];
+$comment = $row["Comentario"];
+$date = $row["Fecha"];
+$anonymus = $row["Anonimo"] == "1";
+
+$user = $anonymus ? "Anónimo" : $row["Usuario"];
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +69,7 @@
             <div id="main-content">
                 <div id="forum-container">
                     <div class="comments-container">
-                        <h1>Titulo Publicacion</h1>
+                        <h1><?php echo $title; ?></h1>
 
                         <ul id="comments-list" class="comments-list">
                             <li>
@@ -40,14 +77,14 @@
                                     <!-- Contenedor del Comentario -->
                                     <div class="comment-box">
                                         <div class="comment-head">
-                                            <h6 class="comment-name by-author">Shinji Ikari</h6>
-                                            <span>24/05/2023 14:23:01</span> <!--Ver si poner la hora de publicacion del comentario--><!--Checar si no quitar-->
+                                            <h6 class="comment-name by-author"><?php echo $user; ?></h6>
+                                            <span><?php echo $date; ?></span> <!--Ver si poner la hora de publicacion del comentario--><!--Checar si no quitar-->
                                             <i class="fa fa-reply"><a href="respuestaformulario.html">Responder</a></i> <!--Area para responder-->
                                             <i class="fa fa-heart"></i> <!--Area para poner si ya fue resuelto o no-->
                                             <!--El area de reply solo estara activa hasta que se se responda la publicacion o algo asi-->
                                         </div>
                                         <div class="comment-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                            <?php echo $comment; ?>
                                         </div>
                                     </div>
                                 </div>
