@@ -37,8 +37,6 @@
                         <ul id="comments-list" class="comments-list">
                             <li>
                                 <div class="comment-main-level">
-                                    <!-- Avatar -->
-                                    <div class="comment-avatar"><img src="../assets/images/shiji.png" alt=""></div>
                                     <!-- Contenedor del Comentario -->
                                     <div class="comment-box">
                                         <div class="comment-head">
@@ -56,8 +54,6 @@
                                 <!-- Respuestas de los comentarios -->
                                 <ul class="comments-list reply-list">
                                     <li>
-                                        <!-- Avatar -->
-                                        <div class="comment-avatar"><img src="../assets/images/rei.png" alt=""></div>
                                         <!-- Contenedor del Comentario -->
                                         <div class="comment-box">
                                             <div class="comment-head">
@@ -73,8 +69,6 @@
                                     </li>
 
                                     <li>
-                                        <!-- Avatar -->
-                                        <div class="comment-avatar"><img src="../assets/images/misato.jpg" alt=""></div>
                                         <!-- Contenedor del Comentario -->
                                         <div class="comment-box">
                                             <div class="comment-head">
@@ -90,8 +84,6 @@
                                     </li>
 
                                     <li>
-                                        <!-- Avatar -->
-                                        <div class="comment-avatar"><img src="../assets/images/shiji.png" alt=""></div>
                                         <!-- Contenedor del Comentario -->
                                         <div class="comment-box">
                                             <div class="comment-head">
