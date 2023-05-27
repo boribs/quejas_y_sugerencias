@@ -115,7 +115,7 @@
                         <div class="forum-header-button colored">
                             <?php
                             if (array_key_exists("username", $_SESSION)) {
-                                echo "<a class=\"forum-header-button-text\" href=\"publicacion.php\">Nueva publicación</a>";
+                                echo "<a class=\"forum-header-button-text\" href=\"nuevapublicacion.php\">Nueva publicación</a>";
                             } else {
                                 echo "<a class=\"forum-header-button-text\" href=\"login.html\">Iniciar sesión</a>";
                             }
