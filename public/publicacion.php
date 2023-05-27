@@ -54,7 +54,9 @@ $connection = connect();
             <div id="main-content">
                 <div id="forum-container">
                     <?php
-                        echo "<div class=\"err-div\">Ocurrió un error, por favor revise su publicación.</div>";
+                        if ($info && $err) {
+                            echo "<div class=\"err-div\">Ocurrió un error, por favor revise su publicación.</div>";
+                        }
                     ?>
                     <form id="publication-form" action="../src/procesar.php" method="post" enctype="multipart/form-data">
                         <h1>Nueva publicación</h1>
