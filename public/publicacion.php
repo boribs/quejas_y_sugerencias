@@ -13,8 +13,7 @@ if (array_key_exists("title", $_POST)) {
     $type = $_POST["type"];
     $area = $_POST["area"];
     $anonymus = $_POST["anonymus"] == "TRUE";
-
-    var_dump($_POST);
+    $err = $_POST["err"] == "1";
 }
 
 require('../src/connection.php');
@@ -54,6 +53,9 @@ $connection = connect();
         <main>
             <div id="main-content">
                 <div id="forum-container">
+                    <?php
+                        echo "<div class=\"err-div\">Ocurrió un error, por favor revise su publicación.</div>";
+                    ?>
                     <form id="publication-form" action="../src/procesar.php" method="post" enctype="multipart/form-data">
                         <h1>Nueva publicación</h1>
                         <div class="option-area">

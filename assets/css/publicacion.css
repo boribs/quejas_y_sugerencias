@@ -88,7 +88,17 @@ h1 {
     background-color: white;
 }
 
-/*Area de opciones*/
+.err-div {
+    background-color: rgb(231, 8, 8);
+    color: var(--secondary-color);
+
+    width: 100%;
+    height: 2rem;
+
+    text-align: center;
+    padding-top: 1rem;
+}
+
 .option-area {
     display: flex;
     justify-content: space-evenly;
