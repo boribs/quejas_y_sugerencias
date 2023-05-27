@@ -14,7 +14,7 @@ require("../src/connection.php");
 $connection = connect();
 $id = $_GET["id"];
 
-$query = "SELECT Titulo, Comentario, Fecha, Anonimo, (SELECT Nombre FROM Usuario WHERE Id=$id) as Usuario FROM Publicacion WHERE Id = $id";
+$query = "SELECT Titulo, Comentario, Fecha, Anonimo, (SELECT Nombre FROM Usuario WHERE Id = Id_Usuario) as Usuario FROM Publicacion WHERE Id = $id";
 
 $result = mysqli_query($connection, $query);
 
