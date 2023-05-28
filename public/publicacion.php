@@ -174,3 +174,4 @@ function get_comments() {
     </footer>
 </body>
 </html>
+<?php mysqli_close($connection); ?>
