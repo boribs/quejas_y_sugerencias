@@ -41,7 +41,7 @@ function create_comment_dom($row) {
     $comment = $row["Comentario"];
     $date = $row["Fecha"];
 
-    echo"<li>
+    echo "<li>
          <div class=\"comment-box\">
              <div class=\"comment-head\">
                  <h6 class=\"comment-name $is_author\">$user</h6>
@@ -53,7 +53,9 @@ function create_comment_dom($row) {
          </li>";
 }
 
-function get_comments($id) {
+function get_comments() {
+    global $id;
+
     $connection = connect();
     $query = "SELECT (SELECT Nombre FROM Usuario WHERE Id=(SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta)) as Usuario, (SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Id_Usuario, (SELECT Comentario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Comentario, (SELECT Fecha FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Fecha FROM Catalogo_Respuesta WHERE Id_Publicacion = $id";
 
@@ -125,7 +127,7 @@ function get_comments($id) {
                                 </div>
                                 <!-- Respuestas de los comentarios -->
                                 <ul class="comments-list reply-list">
-                                    <?php get_comments($id); ?>
+                                    <?php get_comments(); ?>
                                 </ul>
                             </li>
                         </ul>
