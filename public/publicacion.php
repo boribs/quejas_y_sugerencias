@@ -87,7 +87,6 @@ function get_comments() {
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -151,13 +150,14 @@ function get_comments() {
                         </ul>
                         <hr id="big-margin">
                         <div class="form-container">
-                            <form>
-                                <textarea></textarea>
+                            <form action="../src/response.php" method="post" enctype="multipart/form-data">
+                                <textarea name="response"></textarea>
                                 <div class="button-area">
                                     <button type="submit" name="cancelar" class="button--area">
                                         Responder
                                     </button>
                                 </div>
+                                <input type="hidden" name="pub_id" value="<?php echo $id; ?>">
                             </form>
                         </div>
                     </div>
