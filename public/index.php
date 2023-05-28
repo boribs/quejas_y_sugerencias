@@ -11,8 +11,9 @@
         }
         $type = $row["Tipo"];
         $type_class = strtolower($type);
+        $pub_id = $row["Id"];
 
-        echo "<div class=\"entry\" onclick=\"location.href='#';\">
+        echo "<a class=\"entry no-decor\" href=\"publicacion.php?id=$pub_id\">
                  <div class=\"entry-title-div\">
                      <p class=\"entry-title\">
                          <span class=\"entry-user\">$username:</span>
@@ -23,7 +24,7 @@
                  <p class=\"entry-brief\">
                      $content
                  </p>
-             </div>";
+             </a>";
     }
 
     function get_entries() {
@@ -39,7 +40,7 @@
 
         $resuelto = array_key_exists("resuelto", $_GET) ? "TRUE" : "FALSE";
 
-        $query = "SELECT Tipo, Id_Usuario, Titulo, Comentario, Anonimo FROM Publicacion WHERE Resuelto = $resuelto";
+        $query = "SELECT * FROM Publicacion WHERE Resuelto = $resuelto";
         $result = mysqli_query($connection, $query);
 
         while (($row = mysqli_fetch_array($result))) {
@@ -115,7 +116,7 @@
                         <div class="forum-header-button colored">
                             <?php
                             if (array_key_exists("username", $_SESSION)) {
-                                echo "<a class=\"forum-header-button-text\" href=\"publicacion.php\">Nueva publicación</a>";
+                                echo "<a class=\"forum-header-button-text\" href=\"nuevapublicacion.php\">Nueva publicación</a>";
                             } else {
                                 echo "<a class=\"forum-header-button-text\" href=\"login.html\">Iniciar sesión</a>";
                             }

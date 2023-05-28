@@ -1,23 +1,92 @@
 <?php
+
 session_start();
 
 if (!array_key_exists("username", $_SESSION)) {
-    header("location: ../../public/login.html");
+    header("location: ../public/index.php");
 }
 
-// Se mandó la página con información, seguro hay un error
-if (array_key_exists("title", $_POST)) {
-    $info = true;
-    $title = trim($_POST["title"]);
-    $comment = trim($_POST["comment"]);
-    $type = $_POST["type"];
-    $area = $_POST["area"];
-    $anonymus = $_POST["anonymus"] == "TRUE";
-    $err = $_POST["err"] == "1";
+if (!array_key_exists("id", $_GET)) { // si no está la id, regresa
+    header("location: ../public/index.php");
 }
 
-require('../src/connection.php');
+require("../src/connection.php");
 $connection = connect();
+$id = $_GET["id"];
+
+$query = "SELECT Titulo, Comentario, Fecha, Anonimo, (SELECT Nombre FROM Usuario WHERE Id = Id_Usuario) as Usuario, Id_Usuario FROM Publicacion WHERE Id = $id";
+
+$result = mysqli_query($connection, $query);
+
+if (!$result) {
+    // Error!
+}
+
+$row = mysqli_fetch_array($result);
+
+// var_dump($row);
+
+$title = $row["Titulo"];
+$comment = $row["Comentario"];
+$date = $row["Fecha"];
+$anonymus = $row["Anonimo"] == "1";
+$user = $anonymus ? "Anónimo" : $row["Usuario"];
+$user_id = $row["Id_Usuario"];
+
+function get_evidence() {
+    global $connection, $id;
+
+    $query = "SELECT Nombre FROM Catalogo_Evidencia WHERE Id_Publicacion = $id";
+    $result = mysqli_query($connection, $query);
+
+    if ($result->num_rows == 0) {
+        echo "<li class=\"evi\">Sin evidencias</li>";
+    } else {
+        while ($row = mysqli_fetch_array($result)) {
+            $path = $row["Nombre"];
+            $basename = pathinfo($path)["basename"];
+
+            echo "<li class=\"evi\"><a class=\"no-decor\" href=\"$path\" target=\"_blank\">
+                    <img src=\"../assets/images/icono-imagen.png\">
+                    <p>$basename</p>
+                  </a></li>";
+        }
+    }
+}
+
+function create_comment_dom($row) {
+    global $user_id;
+
+    $user = $row["Usuario"];
+    $is_author = $row["Id_Usuario"] == $user_id ? "by-author" : "";
+    $comment = $row["Comentario"];
+    $date = $row["Fecha"];
+
+    echo "<li>
+         <div class=\"comment-box\">
+             <div class=\"comment-head\">
+                 <h6 class=\"comment-name $is_author\">$user</h6>
+                 <span>$date</span>
+             </div>
+             <div class=\"comment-content\">$comment</div>
+         </div>
+         </li>";
+}
+
+function get_comments() {
+    global $id, $connection;
+
+    $query = "SELECT (SELECT Nombre FROM Usuario WHERE Id=(SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta)) as Usuario, (SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Id_Usuario, (SELECT Comentario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Comentario, (SELECT Fecha FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Fecha FROM Catalogo_Respuesta WHERE Id_Publicacion = $id";
+
+    $result = mysqli_query($connection, $query);
+    if ($result->num_rows == 0) {
+        echo "<div class=\"no-comment-div\"></div>";
+    } else {
+        while (($row = mysqli_fetch_array($result))) {
+            create_comment_dom($row);
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +94,7 @@ $connection = connect();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../assets/css/publicacion.css">
-    <title>Quejas FCC | Nueva Publicación</title>
+    <title>Quejas FCC | Publicacion</title>
     <link rel="icon" type="image/png" href="../assets/images/escudo-buap.png">
 </head>
 <body>
@@ -39,110 +108,59 @@ $connection = connect();
                 <div class="header-right header-button">Contacto FCC</div>
             </a>
             <a href="../src/logout.php" class="no-decor">
-                <div class="header-right header-button">Cerrar sesión</div>
+                <?php
+                if (array_key_exists("username", $_SESSION)) {
+                    echo "<div class=\"header-right header-button\">Cerrar sesión</div>";
+                }
+                ?>
             </a>
-            <!-- <div class="header-right">Contacto FCC</div>
-            <div class="header-right">
-                <a href="index.html">
-                    <img class="round-image" src="../assets/images/usuario.png" alt="Descripción de la imagen">
-                </a>
-            </div> -->
-            <!-- Podriamos poner esto para mostrar cuando se logee el usuario y si no dejamos que diga bienvenido -->
         </header>
 
         <main>
             <div id="main-content">
                 <div id="forum-container">
-                    <?php
-                        if ($info && $err) {
-                            echo "<div class=\"err-div\">Ocurrió un error, por favor revise su publicación.</div>";
-                        }
-                    ?>
-                    <form id="publication-form" action="../src/procesar.php" method="post" enctype="multipart/form-data">
-                        <h1>Nueva publicación</h1>
-                        <div class="option-area">
-                            <div class="publication-option">
-                                <p class="text-form">Tipo de publicación</p>
-                                <div class="select">
-                                    <select name="type">
-                                        <?php
-                                        $query = "SELECT Id, Nombre FROM Tipo_Publicacion";
-                                        $result = mysqli_query($connection, $query);
+                    <div class="comments-container">
+                        <h1><?php echo $title; ?></h1>
 
-                                        while (($row = mysqli_fetch_array($result))) {
-                                            $nombre = $row["Nombre"];
-                                            $id = $row["Id"];
-                                            if ($info && $type == $id) {
-                                                echo "<option value=\"$id\" selected>$nombre</option>";
-                                            } else {
-                                                echo "<option value=\"$id\">$nombre</option>";
-                                            }
-                                        }
-                                        ?>
-                                    </select>
+                        <ul id="comments-list" class="comments-list">
+                            <li>
+                                <div class="comment-main-level">
+                                    <!-- Contenedor del Comentario -->
+                                    <div class="comment-box">
+                                        <div class="comment-head">
+                                            <h6 class="comment-name by-author"><?php echo $user; ?></h6>
+                                            <span><?php echo $date; ?></span>
+                                        </div>
+                                        <div class="comment-content">
+                                            <?php echo $comment; ?>
+                                        </div>
+                                        <hr>
+                                        <div class="evidence-content">
+                                            <ul>
+                                                <?php get_evidence(); ?>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="department-option">
-                                <p class="text-form">Dirigido a</p>
-                                <div class="select">
-                                    <select name="area">
-                                        <?php
-                                        $query = "SELECT Id, Nombre FROM Area";
-                                        $result = mysqli_query($connection, $query);
-
-                                        while (($row = mysqli_fetch_array($result))) {
-                                            $nombre = $row["Nombre"];
-                                            $id = $row["Id"];
-                                            if ($info && $area == $id) {
-                                                echo "<option value=\"$id\" selected>$nombre</option>";
-                                            } else {
-                                                echo "<option value=\"$id\">$nombre</option>";
-                                            }
-                                        }
-                                        ?>
-                                    </select>
+                                <!-- Respuestas de los comentarios -->
+                                <ul class="comments-list reply-list">
+                                    <?php get_comments(); ?>
+                                </ul>
+                            </li>
+                        </ul>
+                        <hr id="big-margin">
+                        <div class="form-container">
+                            <form action="../src/response.php" method="post" enctype="multipart/form-data">
+                                <textarea name="response"></textarea>
+                                <div class="button-area">
+                                    <button type="submit" name="cancelar" class="button--area">
+                                        Responder
+                                    </button>
                                 </div>
-                            </div>
-                            <div class="anonymous-option">
-                                <p class="text-form">Publicacion anónima</p>
-                                <div class="checkbox">
-                                    <input type="checkbox" name="anonymus" <?php if ($info && $anonymus) { echo "checked"; }?>>
-                                </div>
-                            </div>
+                                <input type="hidden" name="pub_id" value="<?php echo $id; ?>">
+                            </form>
                         </div>
-                        <hr>
-                        <div class="message-area">
-                            <p class="text-form">Título de publicación</p>
-                            <textarea class="title-area" id="msg" name="title" required><?php if($info) { echo "$title"; } ?></textarea>
-                            <p class="text-form">Explique su publicación</p>
-                            <textarea class="text-area" id="cmt" name="comment" required><?php if($info) { echo "$comment"; } ?></textarea>
-                        </div>
-                        <hr>
-                        <div class="evidence-area">
-                            <label id="button-evidence-label">
-                                <input id="button-evidence-input" type="file" name="evidencia[]" accept="video/*,image/*" multiple>
-                                Adjuntar evidencia
-                            </label>
-                            <div id="evidence-preview"></div>
-                        </div>
-                        <hr>
-                        <div class="button-area">
-                            <a href="index.php">
-                                <button class="button--area" form="none">
-                                    Cancelar
-                                </button>
-                            </a>
-                            <button type="submit" name="enviar" value="1" class="button--area">
-                                Enviar
-                            </button>
-                        </div>
-                        <!-- <hr>
-                            <p class="text-form">Toda información será tratada de
-                                manera discreta y confidencial, se asignarán las quejas/sugerencias
-                                a las autoridades correspondientes, respetetando y cuidando
-                                siempre su identidad dentro de la institucion. </p>
-                         -->
-                    </form>
+                    </div>
                 </div>
             </div>
         </main>
@@ -155,5 +173,4 @@ $connection = connect();
         <div class="footer-text-element">Irving Hernández</div>
     </footer>
 </body>
-<script type="text/javascript" src="../assets/js/utils.js"></script>
 </html>

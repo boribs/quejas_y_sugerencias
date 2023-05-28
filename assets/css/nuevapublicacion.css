@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap');
+
+:root {
+    --main-color: #00395e; /* Este color es del header de https://www.buap.mx/ */
+    --main-color-hover: #156397;
+    --secondary-color: #f0ecec; /* Este es el cuerpo de https://www.cs.buap.mx/ */
+    --darker-blue-buap: #064d7c;
+    --lighter-blue-buap: #04ccf4;
+
+    --header-logo-height: 4rem;
+    --header-logo-margin: 0.6rem;
+
+    --footer-height: 3.5rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: var(--secondary-color);
+
+    background-image: url("../images/fondo-gris.avif");
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+
+    height: calc(var(--header-logo-height) + var(--header-logo-margin));
+    margin: auto 1rem auto 1rem;
+    padding: 0.5rem;
+}
+
+.separator {
+    flex-grow: 1;
+}
+
+.row {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#top-header {
+    margin-bottom: 1rem;
+
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+}
+
+.no-decor {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+#BUAP-logo {
+    height: var(--header-logo-height);
+    margin: var(--header-logo-margin);
+}
+
+#header-and-main {
+    /* https://stackoverflow.com/questions/42294/how-do-you-get-the-footer-to-stay-at-the-bottom-of-a-web-page */
+    min-height: calc(100vh - var(--footer-height));
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 3rem auto 0.3rem auto;
+    padding: 0;
+}
+
+#forum-container {
+    width: 70vw;
+    min-height: 15rem;
+    background-color: white;
+}
+
+.err-div {
+    background-color: rgb(231, 8, 8);
+    color: var(--secondary-color);
+
+    width: 100%;
+    height: 2rem;
+
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.option-area {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 2rem;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+hr {
+    width: 97%;
+    color: var(--main-color);
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: var(--main-color);
+    background-image: none;
+    flex: 1;
+    padding: 0 .5rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+
+    width: 15rem;
+    height: 2rem;
+    line-height: 2;
+
+    background: var(--secondary-color);
+    border-radius: 0.3rem;
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1rem;
+    background: var(--main-color-hover);
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+}
+
+.select:hover::after {
+    color: var(--secondary-color);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox input {
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+    padding: 0 1rem;
+    accent-color: var(--main-color);
+}
+
+/*Esto lo saque e un link https://codepen.io/anna_blok/pen/eYYvxoK*/
+.round-image {
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+}
+
+.message-area {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 1rem;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.message-area p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.title-area {
+    width: 70vw;
+    min-height: 1rem;
+}
+
+.text-area {
+    width: 70vw;
+    min-height: 15rem;
+}
+
+.evidence-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#evidence-preview li {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: baseline;
+}
+
+#evidence-preview img,
+#evidence-preview video {
+    max-width: 10rem;
+    margin: 1rem;
+}
+
+#evidence-preview span {
+    color: gray;
+    text-decoration: underline;
+}
+
+#evidence-preview span:hover {
+    color: darkgray;
+    cursor: pointer;
+}
+
+#button-evidence-label {
+    display: inline-block;
+
+    background-color: var(--darker-blue-buap);
+    color: var(--secondary-color);
+
+    margin: 1rem;
+    padding: 0.5rem;
+
+    border-radius: 0.3rem;
+}
+
+#button-evidence-label:hover {
+    cursor: pointer;
+    background-color: var(--main-color-hover);
+}
+
+#button-evidence-input {
+    display: none;
+}
+
+.no-marker {
+    list-style-type: none;
+}
+
+/*Botones de enviar y cancelar*/
+.button-area {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 2rem;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.button--area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--darker-blue-buap);
+    border: none;
+    border-radius: 0.3rem;
+
+    width: 15rem;
+    height: 3rem;
+
+    color: #fff;
+
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.button--area:hover {
+    background-color: var(--main-color-hover);
+}
+
+.text-form {
+    text-align: center;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+
+    margin-top: 2rem;
+    height: var(--footer-height);
+
+    color: var(--secondary-color);
+    background-color: var(--main-color);
+}
+
+/* placeholder */
+.footer-text-element {
+    margin: 1rem;
+}
+
+@media(max-width: 1000px) {
+    #forum-container {
+        width: 90vw;
+    }
+}
+
+@media(max-width: 600px) {
+    #forum-container {
+        width: 100vw;
+    }
+}
