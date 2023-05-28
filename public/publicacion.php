@@ -14,7 +14,7 @@ require("../src/connection.php");
 $connection = connect();
 $id = $_GET["id"];
 
-$query = "SELECT Titulo, Comentario, Fecha, Anonimo, (SELECT Nombre FROM Usuario WHERE Id = Id_Usuario) as Usuario FROM Publicacion WHERE Id = $id";
+$query = "SELECT Titulo, Comentario, Fecha, Anonimo, (SELECT Nombre FROM Usuario WHERE Id = Id_Usuario) as Usuario, Id_Usuario FROM Publicacion WHERE Id = $id";
 
 $result = mysqli_query($connection, $query);
 
@@ -30,20 +30,22 @@ $title = $row["Titulo"];
 $comment = $row["Comentario"];
 $date = $row["Fecha"];
 $anonymus = $row["Anonimo"] == "1";
-
 $user = $anonymus ? "Anónimo" : $row["Usuario"];
+$user_id = $row["Id_Usuario"];
 
 function create_comment_dom($row) {
+    global $user_id;
+
     $user = $row["Usuario"];
+    $is_author = $row["Id_Usuario"] == $user_id ? "by-author" : "";
     $comment = $row["Comentario"];
     $date = $row["Fecha"];
 
     echo"<li>
          <div class=\"comment-box\">
              <div class=\"comment-head\">
-                 <h6 class=\"comment-name\">$user</h6>
+                 <h6 class=\"comment-name $is_author\">$user</h6>
                  <span>$date</span>
-                 <i class=\fa fa-reply\></i>
                  <i class=\fa fa-heart\></i> <!--El autor puede o no llevar la identificacion si es estudiante o no, checar esto-->
              </div>
              <div class=\"comment-content\">$comment</div>
@@ -53,7 +55,7 @@ function create_comment_dom($row) {
 
 function get_comments($id) {
     $connection = connect();
-    $query = "SELECT (SELECT Nombre FROM Usuario WHERE Id=(SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta)) as Usuario, (SELECT Comentario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Comentario, (SELECT Fecha FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Fecha FROM Catalogo_Respuesta WHERE Id_Publicacion = $id";
+    $query = "SELECT (SELECT Nombre FROM Usuario WHERE Id=(SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta)) as Usuario, (SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Id_Usuario, (SELECT Comentario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Comentario, (SELECT Fecha FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Fecha FROM Catalogo_Respuesta WHERE Id_Publicacion = $id";
 
     $result = mysqli_query($connection, $query);
     if ($result->num_rows == 0) {

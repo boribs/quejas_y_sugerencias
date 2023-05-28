@@ -35,6 +35,8 @@ VALUES ((SELECT Id FROM Tipo_Publicacion WHERE Nombre = "Queja"), 5, "El interne
 
 INSERT INTO Respuesta_Publicacion (Id_Usuario, Comentario, Fecha) VALUES (2, "Esto me parece interesante", CURDATE());
 INSERT INTO Respuesta_Publicacion (Id_Usuario, Comentario, Fecha) VALUES (4, "Si debería revisar eso la administración", '2023-05-23');
+INSERT INTO Respuesta_Publicacion (Id_Usuario, Comentario, Fecha) VALUES (3, "Pero no hacen nada!", '2023-06-23');
 
 INSERT INTO Catalogo_Respuesta (Id_Publicacion, Id_Respuesta) VALUES (2, 1);
 INSERT INTO Catalogo_Respuesta (Id_Publicacion, Id_Respuesta) VALUES (2, 2);
+INSERT INTO Catalogo_Respuesta (Id_Publicacion, Id_Respuesta) VALUES (2, 3);
