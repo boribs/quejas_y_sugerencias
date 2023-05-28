@@ -56,9 +56,14 @@ function get_comments($id) {
     $query = "SELECT (SELECT Nombre FROM Usuario WHERE Id=(SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta)) as Usuario, (SELECT Comentario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Comentario, (SELECT Fecha FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Fecha FROM Catalogo_Respuesta WHERE Id_Publicacion = $id";
 
     $result = mysqli_query($connection, $query);
-    while (($row = mysqli_fetch_array($result))) {
-        create_comment_dom($row);
+    if ($result->num_rows == 0) {
+        echo "<div class=\"no-comment-div\"></div>";
+    } else {
+        while (($row = mysqli_fetch_array($result))) {
+            create_comment_dom($row);
+        }
     }
+
 }
 
 ?>
@@ -106,8 +111,8 @@ function get_comments($id) {
                                     <div class="comment-box">
                                         <div class="comment-head">
                                             <h6 class="comment-name by-author"><?php echo $user; ?></h6>
-                                            <span><?php echo $date; ?></span> <!--Ver si poner la hora de publicacion del comentario--><!--Checar si no quitar-->
-                                            <i class="fa fa-reply"><a href="respuestaformulario.html">Responder</a></i> <!--Area para responder-->
+                                            <span><?php echo $date; ?></span>
+                                            <i class="fa fa-reply"><a href="respuestaformulario.html">Responder</a></i>
                                             <i class="fa fa-heart"></i> <!--Area para poner si ya fue resuelto o no-->
                                             <!--El area de reply solo estara activa hasta que se se responda la publicacion o algo asi-->
                                         </div>
