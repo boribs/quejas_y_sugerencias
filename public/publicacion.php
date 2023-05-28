@@ -33,6 +33,34 @@ $anonymus = $row["Anonimo"] == "1";
 
 $user = $anonymus ? "Anónimo" : $row["Usuario"];
 
+function create_comment_dom($row) {
+    $user = $row["Usuario"];
+    $comment = $row["Comentario"];
+    $date = $row["Fecha"];
+
+    echo"<li>
+         <div class=\"comment-box\">
+             <div class=\"comment-head\">
+                 <h6 class=\"comment-name\">$user</h6>
+                 <span>$date</span>
+                 <i class=\fa fa-reply\></i>
+                 <i class=\fa fa-heart\></i> <!--El autor puede o no llevar la identificacion si es estudiante o no, checar esto-->
+             </div>
+             <div class=\"comment-content\">$comment</div>
+         </div>
+         </li>";
+}
+
+function get_comments($id) {
+    $connection = connect();
+    $query = "SELECT (SELECT Nombre FROM Usuario WHERE Id=(SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta)) as Usuario, (SELECT Comentario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Comentario, (SELECT Fecha FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Fecha FROM Catalogo_Respuesta WHERE Id_Publicacion = $id";
+
+    $result = mysqli_query($connection, $query);
+    while (($row = mysqli_fetch_array($result))) {
+        create_comment_dom($row);
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -90,51 +118,7 @@ $user = $anonymus ? "Anónimo" : $row["Usuario"];
                                 </div>
                                 <!-- Respuestas de los comentarios -->
                                 <ul class="comments-list reply-list">
-                                    <li>
-                                        <!-- Contenedor del Comentario -->
-                                        <div class="comment-box">
-                                            <div class="comment-head">
-                                                <h6 class="comment-name">Rei Ayanami</a></h6>
-                                                <span>24/05/2023 14:33:21</span>
-                                                <i class="fa fa-reply"></i>
-                                                <i class="fa fa-heart">Estudiante</i> <!--Usar esta area para ver quien le respondio al usuario-->
-                                            </div>
-                                            <div class="comment-content">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <!-- Contenedor del Comentario -->
-                                        <div class="comment-box">
-                                            <div class="comment-head">
-                                                <h6 class="comment-name">Misato Katsuragi</a></h6>
-                                                <span>24/05/2023 15:13:21</span>
-                                                <i class="fa fa-reply"></i>
-                                                <i class="fa fa-heart">Administracion</i> <!--Usar esta area para ver quien le respondio al usuario-->
-                                            </div>
-                                            <div class="comment-content">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <!-- Contenedor del Comentario -->
-                                        <div class="comment-box">
-                                            <div class="comment-head">
-                                                <h6 class="comment-name by-author">Shinji Ikari</h6>
-                                                <span>25/05/2023 11:13:21</span>
-                                                <i class="fa fa-reply"></i>
-                                                <i class="fa fa-heart"></i> <!--El autor puede o no llevar la identificacion si es estudiante o no, checar esto-->
-                                            </div>
-                                            <div class="comment-content">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                            </div>
-                                        </div>
-                                    </li>
-
+                                    <?php get_comments($id); ?>
                                 </ul>
                             </li>
                         </ul>
