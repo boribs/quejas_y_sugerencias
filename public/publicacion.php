@@ -67,7 +67,6 @@ function create_comment_dom($row) {
              <div class=\"comment-head\">
                  <h6 class=\"comment-name $is_author\">$user</h6>
                  <span>$date</span>
-                 <i class=\fa fa-heart\></i> <!--El autor puede o no llevar la identificacion si es estudiante o no, checar esto-->
              </div>
              <div class=\"comment-content\">$comment</div>
          </div>
@@ -132,9 +131,6 @@ function get_comments() {
                                         <div class="comment-head">
                                             <h6 class="comment-name by-author"><?php echo $user; ?></h6>
                                             <span><?php echo $date; ?></span>
-                                            <i class="fa fa-reply"><a href="respuestaformulario.html">Responder</a></i>
-                                            <i class="fa fa-heart"></i> <!--Area para poner si ya fue resuelto o no-->
-                                            <!--El area de reply solo estara activa hasta que se se responda la publicacion o algo asi-->
                                         </div>
                                         <div class="comment-content">
                                             <?php echo $comment; ?>
@@ -153,6 +149,17 @@ function get_comments() {
                                 </ul>
                             </li>
                         </ul>
+                        <hr id="big-margin">
+                        <div class="form-container">
+                            <form>
+                                <textarea></textarea>
+                                <div class="button-area">
+                                    <button type="submit" name="cancelar" class="button--area">
+                                        Responder
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
