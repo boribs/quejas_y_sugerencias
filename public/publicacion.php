@@ -130,6 +130,17 @@ function get_comments() {
                                         <div class="comment-head">
                                             <h6 class="comment-name by-author"><?php echo $user; ?></h6>
                                             <span><?php echo $date; ?></span>
+                                            <?php
+                                            $t = getdate();
+                                            $y = $t["year"];
+                                            $m = str_pad($t["mon"], 2, "0", STR_PAD_LEFT);
+                                            $d = str_pad($t["mday"], 2, "0", STR_PAD_LEFT);
+                                            $today = "$y-$m-$d";
+
+                                            if ($_SESSION["id"] == $user_id && $today == $date) {
+                                                echo "<a class=\"edit-button\" href=\"../src/edit.php?id=$id\">Editar</a>";
+                                            }
+                                            ?>
                                         </div>
                                         <div class="comment-content">
                                             <?php echo $comment; ?>
