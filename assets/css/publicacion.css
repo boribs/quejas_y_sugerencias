@@ -145,6 +145,10 @@ ul {
    list-style-type: none;
 }
 
+.edit-button {
+   float: right;
+}
+
 /** ====================
 * Lista de Comentarios
 =======================*/

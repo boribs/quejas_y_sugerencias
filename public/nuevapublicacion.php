@@ -12,7 +12,7 @@ if (array_key_exists("title", $_POST)) {
     $comment = trim($_POST["comment"]);
     $type = $_POST["type"];
     $area = $_POST["area"];
-    $anonymus = $_POST["anonymus"] == "TRUE";
+    $anonymus = $_POST["anonymus"];
     $err = $_POST["err"] == "1";
 }
 
@@ -59,6 +59,13 @@ $connection = connect();
                         }
                     ?>
                     <form id="publication-form" action="../src/procesar.php" method="post" enctype="multipart/form-data">
+                        <?php
+                        echo "<input type=\"hidden\" name=\"err\" value=\"$err\">";
+                        if (array_key_exists("pid", $_GET)) {
+                            $pub_id = $_GET["pid"];
+                            echo "<input type=\"hidden\" name=\"pub_id\" value=\"$pub_id\">";
+                        }
+                        ?>
                         <h1>Nueva publicación</h1>
                         <div class="option-area">
                             <div class="publication-option">
@@ -104,7 +111,7 @@ $connection = connect();
                                 </div>
                             </div>
                             <div class="anonymous-option">
-                                <p class="text-form">Publicacion anónima</p>
+                                <p class="text-form">Publicación anónima</p>
                                 <div class="checkbox">
                                     <input type="checkbox" name="anonymus" <?php if ($info && $anonymus) { echo "checked"; }?>>
                                 </div>
@@ -157,3 +164,4 @@ $connection = connect();
 </body>
 <script type="text/javascript" src="../assets/js/utils.js"></script>
 </html>
+<?php mysqli_close($connection); ?>

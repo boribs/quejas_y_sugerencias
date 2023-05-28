@@ -17,7 +17,6 @@ $comment = trim($_POST["comment"]);
 $type = $_POST["type"];
 $area = $_POST["area"];
 $anonymus = $_POST["anonymus"] == "on" ? "TRUE" : "FALSE";
-// $mediacount = $_POST["mediacount"];
 
 // Para mandar la información de vuelta cuando se quiera editar.
 // Probablemente no es la mejor forma de hacerlo, pero
@@ -38,16 +37,21 @@ if (!$title || !$comment) {
     exit;
 }
 
-$query = "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES
+if (array_key_exists("pub_id", $_POST)) {
+    $pub_id = $_POST["pub_id"];
+
+    $query = "UPDATE Publicacion SET Tipo = $type, Titulo = \"$title\", Comentario = \"$comment\", Id_Area = \"$area\", Anonimo = $anonymus WHERE Id=$pub_id";
+    mysqli_query($connection, $query);
+} else {
+    $query = "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES
           WHERE TABLE_SCHEMA = 'quejas_sugerencias_db' AND TABLE_NAME = 'Publicacion'";
-$pub_id = mysqli_fetch_array(mysqli_query($connection, $query))["AUTO_INCREMENT"];
+    $pub_id = mysqli_fetch_array(mysqli_query($connection, $query))["AUTO_INCREMENT"];
+    $query = "INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, Id_Area, Resuelto, Anonimo) VALUES ($type, $user_id, \"$title\", \"$comment\", CURDATE(), $area, FALSE, $anonymus)";
 
-$query = "INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, Id_Area, Resuelto, Anonimo) " .
-         "VALUES ($type, $user_id, \"$title\", \"$comment\", CURDATE(), $area, FALSE, $anonymus)";
-
-if (!mysqli_query($connection, $query)) {
-    echo $redir;
-    exit;
+    if (!mysqli_query($connection, $query)) {
+        echo $redir;
+        exit;
+    }
 }
 
 foreach ($_FILES["evidencia"]["error"] as $key => $error) {
