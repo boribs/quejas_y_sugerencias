@@ -33,6 +33,27 @@ $anonymus = $row["Anonimo"] == "1";
 $user = $anonymus ? "Anónimo" : $row["Usuario"];
 $user_id = $row["Id_Usuario"];
 
+function get_evidence() {
+    global $connection, $id;
+
+    $query = "SELECT Nombre FROM Catalogo_Evidencia WHERE Id_Publicacion = $id";
+    $result = mysqli_query($connection, $query);
+
+    if ($result->num_rows == 0) {
+        echo "<li class=\"evi\">Sin evidencias</li>";
+    } else {
+        while ($row = mysqli_fetch_array($result)) {
+            $path = $row["Nombre"];
+            $basename = pathinfo($path)["basename"];
+
+            echo "<li class=\"evi\"><a class=\"no-decor\" href=\"$path\" target=\"_blank\">
+                    <img src=\"../assets/images/icono-imagen.png\">
+                    <p>$basename</p>
+                  </a></li>";
+        }
+    }
+}
+
 function create_comment_dom($row) {
     global $user_id;
 
@@ -54,9 +75,8 @@ function create_comment_dom($row) {
 }
 
 function get_comments() {
-    global $id;
+    global $id, $connection;
 
-    $connection = connect();
     $query = "SELECT (SELECT Nombre FROM Usuario WHERE Id=(SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta)) as Usuario, (SELECT Id_Usuario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Id_Usuario, (SELECT Comentario FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Comentario, (SELECT Fecha FROM Respuesta_Publicacion WHERE Id=Id_Respuesta) as Fecha FROM Catalogo_Respuesta WHERE Id_Publicacion = $id";
 
     $result = mysqli_query($connection, $query);
@@ -67,7 +87,6 @@ function get_comments() {
             create_comment_dom($row);
         }
     }
-
 }
 
 ?>
@@ -119,6 +138,12 @@ function get_comments() {
                                         </div>
                                         <div class="comment-content">
                                             <?php echo $comment; ?>
+                                        </div>
+                                        <hr>
+                                        <div class="evidence-content">
+                                            <ul>
+                                                <?php get_evidence(); ?>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

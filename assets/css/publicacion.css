@@ -247,7 +247,6 @@ ul {
    width: 0;
    height: 0;
    display: block;
-   clear: both;
 }
 
 /**
@@ -344,6 +343,34 @@ ul {
 
 .no-comment-div {
    height: 1rem;
+}
+
+hr {
+   border: none;
+   border-top: 1px dashed lightgray;
+}
+
+.evidence-content {
+   background-color: white;
+   padding: 1rem;
+   padding-bottom: 0.3rem;
+}
+
+li.evi img {
+   width: 1rem;
+   height: 1rem;
+   margin-top: 0.3rem;
+   margin-bottom: 0;
+   padding: 0;
+}
+
+li.evi p {
+   display: inline-block;
+}
+
+li.evi, li.evi a {
+   color: black;
+   font-style: italic;
 }
 
 @media only screen and (max-width: 766px) {
