@@ -31,4 +31,10 @@ VALUES ((SELECT Id FROM Tipo_Publicacion WHERE Nombre = "Queja"), 2, "No se resp
 INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, Id_Area, Resuelto, Anonimo)
 VALUES ((SELECT Id FROM Tipo_Publicacion WHERE Nombre = "Sugerencia"), 3, "Bancas en la explanada entre CCO1 y CCO2", "Estaría muy bien si se colocaran bancas entre los salones CCO1 y CCO2, aprovechando el espacio que hay que no se usa.", '2023-02-13', 2, FALSE, FALSE);
 INSERT INTO Publicacion (Tipo, Id_Usuario, Titulo, Comentario, Fecha, Id_Area, Resuelto, Anonimo)
-VALUES ((SELECT Id FROM Tipo_Publicacion WHERE Nombre = "Queja"), 5, "El internet nunca sirve entre las 10:00 y las 13:00 horas.", "Lo que dice el título, el internet no sirve y es un gran problema cuando tenemos actividades que requieren de recursos en línea.", '2023-03-3', 2, FALSE, FALSE);
+VALUES ((SELECT Id FROM Tipo_Publicacion WHERE Nombre = "Queja"), 5, "El internet nunca sirve entre las 10:00 y las 13:00 horas.", "Lo que dice el título, el internet no sirve y es un gran problema cuando tenemos actividades que requieren de recursos en línea.", '2023-03-03', 2, FALSE, FALSE);
+
+INSERT INTO Respuesta_Publicacion (Id_Usuario, Comentario, Fecha) VALUES (2, "Esto me parece interesante", CURDATE());
+INSERT INTO Respuesta_Publicacion (Id_Usuario, Comentario, Fecha) VALUES (4, "Si debería revisar eso la administración", '2023-05-23');
+
+INSERT INTO Catalogo_Respuesta (Id_Publicacion, Id_Respuesta) VALUES (2, 1);
+INSERT INTO Catalogo_Respuesta (Id_Publicacion, Id_Respuesta) VALUES (2, 2);
