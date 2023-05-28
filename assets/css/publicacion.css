@@ -338,6 +338,10 @@ body {
    border-radius: 3px;
 }
 
+.no-comment-div {
+   height: 1rem;
+}
+
 /** =====================
 * Responsive intento
 ========================*/
