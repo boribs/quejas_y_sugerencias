@@ -83,23 +83,20 @@ function get_comments() {
 <body>
     <div id="header-and-main">
         <header id="top-header" class="row">
-            <a href="https://www.buap.mx">
+            <a href="https://www.buap.mx" target="_blank">
                 <img id="BUAP-logo" src="../assets/images/logo-buap-h.png">
             </a>
             <div class="separator"></div>
-            <div class="header-right header-button">
-                <a href="#" class="no-decor">Contacto FCC</a>
-            </div>
-            <div class="header-right header-button">
-                <a href="#" class="no-decor">Otra cosa</a>
-            </div>
-            <!-- <div class="header-right">Contacto FCC</div>
-            <div class="header-right">
-                <a href="index.html">
-                    <img class="round-image" src="../assets/images/usuario.png" alt="Descripción de la imagen">
-                </a>
-            </div> -->
-            <!-- Podriamos poner esto para mostrar cuando se logee el usuario y si no dejamos que diga bienvenido -->
+            <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">
+                <div class="header-right header-button">Contacto FCC</div>
+            </a>
+            <a href="../src/logout.php" class="no-decor">
+                <?php
+                if (array_key_exists("username", $_SESSION)) {
+                    echo "<div class=\"header-right header-button\">Cerrar sesión</div>";
+                }
+                ?>
+            </a>
         </header>
 
         <main>
