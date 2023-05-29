@@ -121,7 +121,13 @@ function get_comments() {
             <div id="main-content">
                 <div id="forum-container">
                     <div class="comments-container">
-                        <h1><?php echo $title; ?></h1>
+                        <h1><?php
+                        if ($resolved) {
+                            echo "[Resuelto] $title";
+                        } else {
+                            echo $title;
+                        }
+                        ?></h1>
 
                         <ul id="comments-list" class="comments-list">
                             <li>
