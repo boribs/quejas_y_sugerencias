@@ -146,6 +146,7 @@ function get_comments() {
 
                                             if ($_SESSION["id"] == $user_id && $today == $date) {
                                                 echo "<a class=\"button-right\" href=\"../src/edit.php?id=$id\">Editar</a>";
+                                                echo "<a class=\"button-right\" href=\"../src/edit.php?id=$id&del=1\">Borrar</a>";
                                             }
 
                                             if ($_SESSION["id"] == 1 && !$resolved) { // admin
