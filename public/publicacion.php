@@ -14,7 +14,7 @@ require("../src/connection.php");
 $connection = connect();
 $id = $_GET["id"];
 
-$query = "SELECT Titulo, Comentario, Fecha, Anonimo, (SELECT Nombre FROM Usuario WHERE Id = Id_Usuario) as Usuario, Id_Usuario FROM Publicacion WHERE Id = $id";
+$query = "SELECT Titulo, Comentario, Fecha, Anonimo, (SELECT Nombre FROM Usuario WHERE Id = Id_Usuario) as Usuario, Id_Usuario, Resuelto FROM Publicacion WHERE Id = $id";
 
 $result = mysqli_query($connection, $query);
 
@@ -32,6 +32,7 @@ $date = $row["Fecha"];
 $anonymus = $row["Anonimo"] == "1";
 $user = $anonymus ? "Anónimo" : $row["Usuario"];
 $user_id = $row["Id_Usuario"];
+$resolved = $row["Resuelto"];
 
 function get_evidence() {
     global $connection, $id;
@@ -120,7 +121,13 @@ function get_comments() {
             <div id="main-content">
                 <div id="forum-container">
                     <div class="comments-container">
-                        <h1><?php echo $title; ?></h1>
+                        <h1><?php
+                        if ($resolved) {
+                            echo "[Resuelto] $title";
+                        } else {
+                            echo $title;
+                        }
+                        ?></h1>
 
                         <ul id="comments-list" class="comments-list">
                             <li>
@@ -138,7 +145,11 @@ function get_comments() {
                                             $today = "$y-$m-$d";
 
                                             if ($_SESSION["id"] == $user_id && $today == $date) {
-                                                echo "<a class=\"edit-button\" href=\"../src/edit.php?id=$id\">Editar</a>";
+                                                echo "<a class=\"button-right\" href=\"../src/edit.php?id=$id\">Editar</a>";
+                                            }
+
+                                            if ($_SESSION["id"] == 1 && !$resolved) { // admin
+                                                echo "<a class=\"button-right\" href=\"../src/resolve.php?id=$id\">Resolver</a>";
                                             }
                                             ?>
                                         </div>
