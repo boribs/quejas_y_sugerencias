@@ -9,6 +9,16 @@ $connection = connect();
 
 $id = $_GET["id"];
 
+$query = "DELETE FROM Catalogo_Evidencia WHERE Id_Publicacion=$id";
+mysqli_query($connection, $query);
+
+if (array_key_exists("del", $_GET)) {
+    $query = "DELETE FROM Publicacion WHERE Id=$id";
+    mysqli_query($connection, $query);
+    mysqli_close($connection);
+    header("location: ../public/index.php");
+}
+
 $query = "SELECT Nombre FROM Catalogo_Evidencia WHERE Id_Publicacion=$id";
 $result = mysqli_query($connection, $query);
 
@@ -17,9 +27,6 @@ while ($row = mysqli_fetch_array($result)) {
         exit;
     }
 }
-
-$query = "DELETE FROM Catalogo_Evidencia WHERE Id_Publicacion=$id";
-mysqli_query($connection, $query);
 
 $query = "SELECT * FROM Publicacion WHERE Id=$id";
 $row = mysqli_fetch_array(mysqli_query($connection, $query));
