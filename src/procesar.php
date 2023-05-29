@@ -57,7 +57,8 @@ if (array_key_exists("pub_id", $_POST)) {
 foreach ($_FILES["evidencia"]["error"] as $key => $error) {
     if ($error == UPLOAD_ERR_OK) {
         $tmp_name = $_FILES["evidencia"]["tmp_name"][$key];
-        $name = $_FILES["evidencia"]["name"][$key];
+        $ext = pathinfo($_FILES["evidencia"]["name"][$key], PATHINFO_EXTENSION);
+        $name = uniqid() . ".$ext";
 
         while (in_array($name, $evidence_files)) {
             $ext = pathinfo($name, PATHINFO_EXTENSION);
