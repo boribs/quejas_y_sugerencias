@@ -3,7 +3,7 @@
 session_start();
 
 if (!array_key_exists("username", $_SESSION)) {
-    header("location: ../public/index.php");
+    header("location: ../public/login.html");
 }
 
 if (!array_key_exists("id", $_GET)) { // si no está la id, regresa
