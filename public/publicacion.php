@@ -181,7 +181,7 @@ function get_comments() {
                                     </button>
                                     <a href="index.php">
                                         <button form="none" class="button--area">
-                                            Cancelar
+                                            Regresar al inicio
                                         </button>
                                     </a>
                                 </div>
