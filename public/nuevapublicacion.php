@@ -38,7 +38,7 @@ $connection = connect();
                 <img id="BUAP-logo" src="../assets/images/logo-buap-h.png">
             </a>
             <div class="separator"></div>
-            <a href="../public/index.php" target="_blank" class="no-decor">
+            <a href="../public/index.php" target="_self" class="no-decor">
                 <div class="header-right header-button">Inicio</div>
             </a>
             <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">
