@@ -179,6 +179,11 @@ function get_comments() {
                                     <button type="submit" name="cancelar" class="button--area">
                                         Responder
                                     </button>
+                                    <a href="index.php">
+                                        <button form="none" class="button--area">
+                                            Cancelar
+                                        </button>
+                                    </a>
                                 </div>
                                 <input type="hidden" name="pub_id" value="<?php echo $id; ?>">
                             </form>
