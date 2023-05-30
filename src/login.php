@@ -21,11 +21,11 @@
     if ($array) {
         $_SESSION['username'] = $array["Nombre"];
         $_SESSION['id'] = $array["Id"];
-        header("location: ../../public/index.php");
+        header("location: ../public/index.php");
         exit();
     } else {
         echo "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.";
-        header("location: ../../public/login.html");
+        header("location: ../public/login.html");
     }
 
     mysqli_close($connection);
