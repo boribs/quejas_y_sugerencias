@@ -59,6 +59,7 @@
             $row["Tipo"] = $pub_types[$row["Tipo"]];
             create_entry_dom($row);
         }
+        mysqli_close($connection);
     }
 ?>
 
@@ -140,4 +141,4 @@
     </footer>
 </body>
 </html>
-<?php mysqli_close($connection); ?>
+

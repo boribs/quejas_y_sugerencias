@@ -95,7 +95,7 @@ function get_comments() {
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../assets/css/publicacion.css">
-    <title>Quejas FCC | Publicacion</title>
+    <title>Publicacion | Quejas FCC</title>
     <link rel="icon" type="image/png" href="../assets/images/escudo-buap.png">
 </head>
 <body>
@@ -105,6 +105,9 @@ function get_comments() {
                 <img id="BUAP-logo" src="../assets/images/logo-buap-h.png">
             </a>
             <div class="separator"></div>
+            <a href="../public/index.php" target="_blank" class="no-decor">
+                <div class="header-right header-button">Inicio</div>
+            </a>
             <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">
                 <div class="header-right header-button">Contacto FCC</div>
             </a>

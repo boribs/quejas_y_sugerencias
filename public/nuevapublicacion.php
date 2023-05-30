@@ -5,6 +5,9 @@ if (!array_key_exists("username", $_SESSION)) {
     header("location: ../../public/login.html");
 }
 
+$info = false; //Esto lo puse por el error que me salia
+$err = false;
+
 // Se mandó la página con información, seguro hay un error
 if (array_key_exists("title", $_POST)) {
     $info = true;
@@ -25,7 +28,7 @@ $connection = connect();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../assets/css/nuevapublicacion.css">
-    <title>Quejas FCC | Nueva Publicación</title>
+    <title>Nueva Publicación | Quejas FCC</title>
     <link rel="icon" type="image/png" href="../assets/images/escudo-buap.png">
 </head>
 <body>
@@ -35,6 +38,9 @@ $connection = connect();
                 <img id="BUAP-logo" src="../assets/images/logo-buap-h.png">
             </a>
             <div class="separator"></div>
+            <a href="../public/index.php" target="_blank" class="no-decor">
+                <div class="header-right header-button">Inicio</div>
+            </a>
             <a href="https://www.cs.buap.mx/" target="_blank" class="no-decor">
                 <div class="header-right header-button">Contacto FCC</div>
             </a>
